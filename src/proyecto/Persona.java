@@ -2,7 +2,9 @@ package proyecto;
 
 public abstract class Persona {
 
-    private String nombre, cedula, tel;
+    private String nombre;
+    private final String cedula;
+    private String tel;
 
     public Persona(String nombre, String cedula, String tel) {
         this.nombre = nombre;

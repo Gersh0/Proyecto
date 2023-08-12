@@ -13,5 +13,9 @@ public class Proveedor extends Persona {
         return tipoCarros;
     }
 
+    public void setTipoCarros(String tipoCarros) {
+        this.tipoCarros = tipoCarros;
+    }
+
 
 }

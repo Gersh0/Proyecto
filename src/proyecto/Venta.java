@@ -21,8 +21,8 @@ public class Venta {
 
     private String codigo;
     private Vendedor vendedor;
-    private Cliente cliente;
-    private Carro carro;
+    private final Cliente cliente;
+    private final Carro carro;
     private LocalDate fecha;
     private MP metodoP = MP.CREDITO;
 
