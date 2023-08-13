@@ -15,7 +15,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(nombre)"/>
+          <text value="Nombre"/>
         </properties>
       </component>
       <component id="398ea" class="javax.swing.JTextField" binding="inputCcEmpleado">
@@ -25,7 +25,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(cc)"/>
+          <text value="Cédula"/>
         </properties>
       </component>
       <component id="1ccde" class="javax.swing.JTextField" binding="inputTelefonoEmpleado">
@@ -35,7 +35,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(tel)"/>
+          <text value="Teléfono"/>
         </properties>
       </component>
       <component id="837b6" class="javax.swing.JCheckBox" binding="isVendedor">
@@ -61,7 +61,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(nombre)"/>
+          <text value="Nombre"/>
         </properties>
       </component>
       <component id="1850b" class="javax.swing.JTextField" binding="inputCcProveedor">
@@ -71,7 +71,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(cc)"/>
+          <text value="NIT"/>
         </properties>
       </component>
       <component id="9413f" class="javax.swing.JTextField" binding="inputTelProveedor">
@@ -81,7 +81,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(tel)"/>
+          <text value="Teléfono"/>
         </properties>
       </component>
       <component id="ce2aa" class="javax.swing.JButton" binding="botonCrearEmpleado">
@@ -115,7 +115,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(cc)"/>
+          <text value="Cédula"/>
         </properties>
       </component>
       <component id="9f6a1" class="javax.swing.JButton" binding="botonBorrarEmpleado">
@@ -141,7 +141,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(cc)"/>
+          <text value="NIT"/>
         </properties>
       </component>
       <component id="84763" class="javax.swing.JButton" binding="botonBorrarProveedor">

@@ -25,6 +25,11 @@ public class Compradores extends JFrame {
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        Almacen.focus(inputBorrarCc, "Cédula");
+        Almacen.focus(inputCcBuscar, "Cédula");
+        Almacen.focus(inputCcNuevo, "Cédula");
+        Almacen.focus(inputTelNuevo, "Teléfono");
+        Almacen.focus(inputNombreNuevo, "Nombre");
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

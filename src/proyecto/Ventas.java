@@ -31,6 +31,11 @@ public class Ventas extends JFrame {
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        Almacen.focus(inputAddCliente, "Cedula Cliente");
+        Almacen.focus(inputAddVendedor, "Cedula Vendedor");
+        Almacen.focus(inputBuscarCodigoVenta, "Codigo");
+        Almacen.focus(inputAddCarroModelo, "Modelo");
+        Almacen.focus(inputAddCarroMarca, "Marca");
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,92 +43,6 @@ public class Ventas extends JFrame {
                 dispose();
             }
         });
-        inputAddCliente.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if(inputAddCliente.getText().contains("Cedula Cliente")){
-                    inputAddCliente.setText("");
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if(!inputAddCliente.getText().equals("")){
-
-                }else{
-                    inputAddCliente.setText("Cedula Cliente");
-                }
-            }
-        });
-
-        inputAddVendedor.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if(inputAddVendedor.getText().contains("Cedula Vendedor")){
-                    inputAddVendedor.setText("");
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if(!inputAddVendedor.getText().equals("")){
-
-                }else{
-                    inputAddVendedor.setText("Cedula Vendedor");
-                }
-            }
-        });
-
-        inputBuscarCodigoVenta.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if(inputBuscarCodigoVenta.getText().contains("Codigo")){
-                    inputBuscarCodigoVenta.setText("");
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if(!inputBuscarCodigoVenta.getText().equals("")){
-
-                }else{
-                    inputBuscarCodigoVenta.setText("Codigo");
-                }
-            }
-        });
-        inputAddCarroMarca.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if(inputAddCarroMarca.getText().contains("Marca")){
-                    inputAddCarroMarca.setText("");
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if(!inputAddCarroMarca.getText().equals("")){
-
-                }else{
-                    inputAddCarroMarca.setText("Marca");
-                }
-            }
-        });
-        inputAddCarroModelo.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if(inputAddCarroModelo.getText().contains("Modelo")){
-                    inputAddCarroModelo.setText("");
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if(!inputAddCarroModelo.getText().equals("")){
-
-                }else{
-                    inputAddCarroModelo.setText("Modelo");
-                }
-            }
-        });
     }
+
 }

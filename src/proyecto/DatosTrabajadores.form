@@ -31,7 +31,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="CC"/>
+          <text value="Cédula"/>
         </properties>
       </component>
       <component id="331db" class="javax.swing.JTextField" binding="inputCcProveedor">
@@ -40,7 +40,9 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value="NIT"/>
+        </properties>
       </component>
       <component id="7fc9e" class="javax.swing.JButton" binding="botonEditarTrabajador">
         <constraints>

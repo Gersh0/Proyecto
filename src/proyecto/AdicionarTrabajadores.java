@@ -31,6 +31,15 @@ public class AdicionarTrabajadores extends JFrame {
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        Almacen.focus(inputNombreProveedor, "Nombre");
+        Almacen.focus(inputNombreEmpleado, "Nombre");
+        Almacen.focus(inputCcProveedor, "NIT");
+        Almacen.focus(inputCcEmpleado, "Cédula");
+        Almacen.focus(inputTelProveedor, "Teléfono");
+        Almacen.focus(inputTelefonoEmpleado, "Teléfono");
+        Almacen.focus(inputBorrarProveedor, "NIT");
+        Almacen.focus(inputBorrarEmpleado, "Cédula");
+
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

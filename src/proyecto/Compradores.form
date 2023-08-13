@@ -15,7 +15,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(cc)"/>
+          <text value="Cédula"/>
         </properties>
       </component>
       <component id="36723" class="javax.swing.JTextField" binding="inputNombreNuevo">
@@ -25,7 +25,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(Nombre)"/>
+          <text value="Nombre"/>
         </properties>
       </component>
       <component id="89a81" class="javax.swing.JTextField" binding="inputCcNuevo">
@@ -35,7 +35,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(cc)"/>
+          <text value="Cédula"/>
         </properties>
       </component>
       <component id="b4b22" class="javax.swing.JTextField" binding="inputTelNuevo">
@@ -45,7 +45,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(telefono)"/>
+          <text value="Teléfono"/>
         </properties>
       </component>
       <component id="fae75" class="javax.swing.JLabel" binding="tituloAddUsuario">
@@ -87,7 +87,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="(cc)"/>
+          <text value="Cédula"/>
         </properties>
       </component>
       <component id="70e1" class="javax.swing.JButton" binding="botonBorrarUsuario">

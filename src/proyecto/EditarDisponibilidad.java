@@ -7,14 +7,12 @@ import java.awt.event.ActionListener;
 public class EditarDisponibilidad extends JFrame{
     private JLabel tituloEstado;
     private JLabel tituloDisponibilidad;
-    private JLabel tituloMarca;
     private JTextField inputEstadoMarca;
     private JTextField inputDisponibilidadMarca;
     private JTextField inputEstadoModelo;
     private JTextField inputDisponibilidadModelo;
     private JCheckBox isEstado;
     private JCheckBox isDisponible;
-    private JLabel tituloModelo;
     private JPanel editarDisponibilidad;
     private JButton botoneditarEstado;
     private JButton botonEditarDisponibilidad;
@@ -26,6 +24,10 @@ public class EditarDisponibilidad extends JFrame{
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        Almacen.focus(inputEstadoMarca,"Marca");
+        Almacen.focus(inputDisponibilidadModelo,"Modelo");
+        Almacen.focus(inputEstadoModelo,"Modelo");
+        Almacen.focus(inputDisponibilidadMarca,"Marca");
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

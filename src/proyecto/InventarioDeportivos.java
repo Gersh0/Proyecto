@@ -14,7 +14,6 @@ public class InventarioDeportivos extends JFrame{
     private JLabel tituloNuevoDeportivo;
     private JTextField inputNuevaMarca;
     private JTextField inputNuevoModelo;
-    private JTextField inputNuevoCC;
     private JTextField inputNuevaCantidad;
     private JLabel tituloBorrarDeportivo;
     private JTextField inputBorrarMarca;
@@ -31,6 +30,10 @@ public class InventarioDeportivos extends JFrame{
     private JButton botonEditar;
     private JTextField inputEditarPrecio;
     private JButton atrasButton;
+    private JTextField inputNuevoCilindraje;
+    private JTextField inputBorrarSerial;
+    private JTextField inputEditarSerial;
+    private JTextField inputAddSerial;
 
     public InventarioDeportivos(){
         setContentPane(inventarioDeportivos);
@@ -38,6 +41,18 @@ public class InventarioDeportivos extends JFrame{
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        Almacen.focus(inputNuevoCilindraje,"Cilindraje");
+        Almacen.focus(inputNuevaMarca,"Marca");
+        Almacen.focus(inputNuevoModelo,"Modelo");
+        Almacen.focus(inputAddSerial,"Serial");
+        Almacen.focus(inputBorrarMarca,"Marca");
+        Almacen.focus(inputBorrarSerial,"Serial");
+        Almacen.focus(inputBuscarMarca,"Marca");
+        Almacen.focus(inputBuscarModelo,"Modelo");
+        Almacen.focus(inputEditarMarca,"Marca");
+        Almacen.focus(inputEditarModelo,"Modelo");
+        Almacen.focus(inputEditarPrecio,"Precio");
+        Almacen.focus(inputEditarSerial,"Serial");
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
