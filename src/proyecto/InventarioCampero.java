@@ -1,8 +1,10 @@
 package proyecto;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class InventarioCampero {
+public class InventarioCampero extends JFrame{
 
 
     private JPanel invCamperos;
@@ -30,6 +32,22 @@ public class InventarioCampero {
     private JButton botonBorrar;
     private JButton botonEditar;
     private JTextField inputEditarPrecio;
+    private JButton atrasButton;
+
+    public InventarioCampero(){
+        setContentPane(invCamperos);
+        setTitle("Hola");
+        setSize(960, 540);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+        atrasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new InventarioGeneral();
+                dispose();
+            }
+        });
+    }
 
 
 }

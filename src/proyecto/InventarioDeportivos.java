@@ -1,8 +1,10 @@
 package proyecto;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class InventarioDeportivos {
+public class InventarioDeportivos extends JFrame{
     private JLabel tituloInventarioDeportivos;
     private JLabel tituloBuscarDeportivo;
     private JTextField inputBuscarMarca;
@@ -28,4 +30,20 @@ public class InventarioDeportivos {
     private JButton botonBorrar;
     private JButton botonEditar;
     private JTextField inputEditarPrecio;
+    private JButton atrasButton;
+
+    public InventarioDeportivos(){
+        setContentPane(inventarioDeportivos);
+        setTitle("Hola");
+        setSize(960, 540);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+        atrasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new InventarioGeneral();
+                dispose();
+            }
+        });
+    }
 }

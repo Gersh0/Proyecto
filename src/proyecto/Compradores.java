@@ -1,8 +1,10 @@
 package proyecto;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Compradores {
+public class Compradores extends JFrame {
     private JLabel tituloDatosCompradores;
     private JTextField inputCcBuscar;
     private JLabel tituloAddUsuario;
@@ -15,4 +17,20 @@ public class Compradores {
     private JLabel tituloBorrarUsuario;
     private JTextField inputBorrarCc;
     private JButton botonBorrarUsuario;
+    private JButton atrasButton;
+
+    public Compradores() {
+        setContentPane(compradores);
+        setTitle("Hola");
+        setSize(960, 540);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+        atrasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Interfaz();
+                dispose();
+            }
+        });
+    }
 }

@@ -1,8 +1,10 @@
 package proyecto;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class InventarioAutomovil {
+public class InventarioAutomovil extends JFrame {
     private JPanel inventarioAutomovil;
     private JLabel tituloInventarioAutomoviles;
     private JTextField inputBuscarMarca;
@@ -28,8 +30,20 @@ public class InventarioAutomovil {
     private JButton botonCrear;
     private JButton botonBorrar;
     private JButton botonEditar;
+    private JButton atrasButton;
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+    public InventarioAutomovil() {
+        setContentPane(inventarioAutomovil);
+        setTitle("Hola");
+        setSize(960, 540);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+        atrasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new InventarioGeneral();
+                dispose();
+            }
+        });
     }
 }
