@@ -35,7 +35,7 @@ public class Venta {
         this.fecha = fecha;
         this.metodoP = metodoP;
     }
-
+//hola
 
     public String getCodigo() {
         return codigo;
