@@ -82,16 +82,15 @@ public abstract class Almacen {
     }
 
     public static void addCarro(String marca, String modelo, String serial, Cilindraje tipo, boolean disponible, boolean estado) {//Ver cómo involucrar al proveedor
-        if(carros==null){
-            carros=new Carro[1];
-            carros[0]=new Carro(marca, modelo, serial, tipo, estado, disponible);
-        }
-        else{
+        if (carros == null) {
+            carros = new Carro[1];
+            carros[0] = new Carro(marca, modelo, serial, tipo, estado, disponible);
+        } else {
             Carro carro = new Carro(marca, modelo, serial, tipo, disponible, estado);
             carros = Arrays.copyOf(carros, carros.length + 1);
             carros[carros.length - 1] = carro;
         }
-
+    }
     public static void addProveedor(String nombre, String nit, String tel, String tipoCarro) {
         if (proveedores == null) {
             proveedores = new Proveedor[1];
@@ -141,7 +140,7 @@ public abstract class Almacen {
         cliente.registrarCompra(new Venta(vendedor, cliente, carro, fecha, formaDePago));
     }
 
-    public static int buscarCliente(String cedula) throws  EAlmacen{//ver cómo poner con personas
+
     public static int buscarProveedor(String nit) {//ver cómo poner con personas
         int i = 0;
         if (proveedores == null) {//Si es null envía -1 para indicar que no existe
@@ -157,7 +156,7 @@ public abstract class Almacen {
         }
     }
 
-    public static int buscarCliente(String cedula) {//ver cómo poner con personas
+    public static int buscarCliente(String cedula) throws EAlmacen{//ver cómo poner con personas
         int i = 0;
         if(clientes==null){
             throw new EAlmacen("No existe el cliente");

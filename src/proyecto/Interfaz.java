@@ -62,8 +62,8 @@ public class Interfaz extends JFrame {
     public static void main(String[] args) {
         Almacen.addCliente("Maria","123","123");
         Almacen.addCarro("Re","32","C09H",Cilindraje.ALTO,true,true);
-        Almacen.addEmpleado("Juan","378","83",389);
-        Vendedor v1=new Vendedor("Juan","3432","334",1400,1);
+        Almacen.addEmpleado("Juan","378","83",389,true);
+        Vendedor v1=new Vendedor("Juan","3432","334",1400);
         Empleado em=Almacen.getEmpleados()[0];
         Cliente e1=Almacen.getClientes()[0];
         Carro c1=Almacen.getCarros()[0];
@@ -71,11 +71,10 @@ public class Interfaz extends JFrame {
         Almacen.addVenta(v1,e1,c1,de,MP.CREDITO);
         Almacen.addCliente("Germán","1234","1234");
         Almacen.addCarro("Ren","32","C0F9H",Cilindraje.ALTO,true,true);
-        Almacen.addEmpleado("Juan","378","83",389);
+        Almacen.addEmpleado("Juan","378","83",389,true);
         e1=Almacen.getClientes()[1];
         c1=Almacen.getCarros()[1];
         Almacen.addVenta(v1,e1,c1,de,MP.EFECTIVO);
-        new Interfaz();
         Almacen.addEmpleado("Andres","1","3333333", 5000000,false);
         Almacen.addEmpleado("Julio","2","444444444", 2000000,true);
         Almacen.addEmpleado("Gullermo","3","55555555", 2000000,true);
@@ -97,6 +96,7 @@ public class Interfaz extends JFrame {
         Almacen.addCarro("BMW","2023","0",Cilindraje.BAJO,true,true, "Campero");
         Almacen.addCarro("Volvo","2023","0",Cilindraje.MEDIO,true,true, "Campero");
         Almacen.addCarro("BMW","2023","0",Cilindraje.BAJO,true,true, "Automovil");
+        new Interfaz();
     }
 
 }
