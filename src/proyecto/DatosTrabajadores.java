@@ -40,12 +40,19 @@ public class DatosTrabajadores extends JFrame {
         });
         buscarEmpleado.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,
-                        "Nombre: "+ Almacen.getEmpleados()[Almacen.buscarEmpleado(inputCcEmpleado.getText())].getNombre()+
-                                "\nCargo: ¿Lo ponemos?",
-                        "Empleado(a)", JOptionPane.INFORMATION_MESSAGE);
-                inputCcEmpleado.setText("");
+            public void actionPerformed(ActionEvent e) throws ArrayIndexOutOfBoundsException{
+                try{
+                    JOptionPane.showMessageDialog(null,
+                            "Nombre: "+ Almacen.getEmpleados()[Almacen.buscarEmpleado(inputCcEmpleado.getText())].getNombre()+
+                                    "\nCargo: ¿Lo ponemos?",
+                            "Empleado(a)", JOptionPane.INFORMATION_MESSAGE);
+                    inputCcEmpleado.setText("Cédula");
+                }catch(ArrayIndexOutOfBoundsException a){
+                    System.out.println(a);
+                    JOptionPane.showMessageDialog(null,
+                            "La cédula ingresada no coincide con ningún empleado registrado.",
+                            "Empleado(a)", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         buscarProveedor.addActionListener(new ActionListener() {

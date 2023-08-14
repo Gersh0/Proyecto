@@ -24,6 +24,7 @@ public class AdicionarTrabajadores extends JFrame {
     private JTextField inputBorrarProveedor;
     private JButton botonBorrarProveedor;
     private JButton atrasButton;
+    private JComboBox inputAddTipoCarro;
 
     public AdicionarTrabajadores() {
         setContentPane(adicionarTrabajadores);
@@ -31,37 +32,125 @@ public class AdicionarTrabajadores extends JFrame {
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        Almacen.focus(inputNombreProveedor, "Nombre");
-        Almacen.focus(inputNombreEmpleado, "Nombre");
-        Almacen.focus(inputCcProveedor, "NIT");
-        Almacen.focus(inputCcEmpleado, "Cédula");
-        Almacen.focus(inputTelProveedor, "Teléfono");
-        Almacen.focus(inputTelefonoEmpleado, "Teléfono");
-        Almacen.focus(inputBorrarProveedor, "NIT");
-        Almacen.focus(inputBorrarEmpleado, "Cédula");
+        defaultCamposProveedor();
+        defaultCamposEmpleado();
+        crearPersonal(botonCrearEmpleado);
+        crearPersonal(botonCrearProveedor);
+        botonAtras(atrasButton);
+        borrarPersonal(botonBorrarEmpleado);
+        borrarPersonal(botonBorrarProveedor);
 
-        atrasButton.addActionListener(new ActionListener() {
+    }
+
+    public void defaultCamposEmpleado() {
+        Almacen.focus(inputNombreEmpleado, "Nombre");
+        Almacen.focus(inputCcEmpleado, "Cédula");
+        Almacen.focus(inputTelefonoEmpleado, "Teléfono");
+        Almacen.focus(inputBorrarEmpleado, "Cédula");
+    }
+
+    public void resetCamposEmpleado(){
+        inputNombreEmpleado.setText("Nombre");
+        inputCcEmpleado.setText("Cédula");
+        inputTelefonoEmpleado.setText("Teléfono");
+        isVendedor.setSelected(false);
+    }
+    public void defaultCamposProveedor() {
+        Almacen.focus(inputNombreProveedor, "Nombre");
+        Almacen.focus(inputCcProveedor, "NIT");
+        Almacen.focus(inputTelProveedor, "Teléfono");
+        Almacen.focus(inputBorrarProveedor, "NIT");
+        inputAddTipoCarro.setSelectedItem("Tipo de Carros");
+    }
+    public void resetCamposProveedor(){
+        inputNombreProveedor.setText("Nombre");
+        inputCcProveedor.setText("NIT");
+        inputTelProveedor.setText("Teléfono");
+    }
+
+    public void botonAtras(JButton b){
+        b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(Almacen.getEmpleados()==null){
+                if (Almacen.getEmpleados() == null) {
                     new Interfaz();
                     dispose();
-                }else{
+                } else {
                     new DatosTrabajadores();
                     dispose();
                 }
             }
         });
+    }
 
-        botonCrearEmpleado.addActionListener(new ActionListener() {
+    public void borrarPersonal(JButton b){
+        b.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                Almacen.addEmpleado(inputNombreEmpleado.getText(), inputCcEmpleado.getText(), inputTelefonoEmpleado.getText(), 0);
-                JOptionPane.showMessageDialog(null, "Empleado añadido",
-                        "Añadir empleado", JOptionPane.INFORMATION_MESSAGE);
-                //JOptionPane.showMessageDialog(null, Almacen.getCarros().length);
+            public void actionPerformed(ActionEvent e) {//Esto puede cambiarse por case y falta ver cómo tirar error si no existe la cédula pero sí hay gente
+                 if(b.getText().toLowerCase().contains("empleado")){
+                    if(Almacen.getEmpleados()==null){
+                        JOptionPane.showMessageDialog(null, "No hay empleados registrados", "Borrar Personal", JOptionPane.ERROR_MESSAGE);
+
+                    }else{
+                        Almacen.delEmpleado(inputBorrarEmpleado.getText());
+                        JOptionPane.showMessageDialog(null, "Empleado eliminado", "Borrar Personal", JOptionPane.INFORMATION_MESSAGE);
+                        inputBorrarEmpleado.setText("Cédula");
+                    }
+                }else{
+                     if(Almacen.getProveedores()==null){
+                         JOptionPane.showMessageDialog(null, "No hay proveedores registrados", "Borrar Personal", JOptionPane.ERROR_MESSAGE);
+                     }else{
+                         Almacen.delProveedor(inputBorrarProveedor.getText());
+                         JOptionPane.showMessageDialog(null, "Proveedor eliminado", "Borrar Personal", JOptionPane.INFORMATION_MESSAGE);
+                         inputBorrarProveedor.setText("NIT");
+                     }
+                }
             }
         });
+    }
+    public void crearPersonal(JButton b) {
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (b.getText().toLowerCase().contains("empleado")) {
+                    String nombre = inputNombreEmpleado.getText();
+                    String nit = inputCcEmpleado.getText();
+                    String tel = inputTelefonoEmpleado.getText();
+                    if (Almacen.buscarEmpleado(nit) != -1) { //Si al buscar no obtiene -1 significa que existe y no agrega nada.
+                        resetCamposEmpleado();
+                        JOptionPane.showMessageDialog(null, "Ya existe un empleado identificado con la cédula ingresado", "Añadir Personal", JOptionPane.ERROR_MESSAGE);
 
+                        //Sino entonces verifica que los campos estén llenos para crear un empleado (Los campos no pueden ser los que están por defecto).
+                    } else if ((Almacen.soloLetras(nombre) && !nombre.equalsIgnoreCase("Nombre")) && (!Almacen.soloLetras(nit) && !nit.equalsIgnoreCase("nit")) && (!Almacen.soloLetras(tel) && !tel.equalsIgnoreCase("teléfono"))) {
+                        Almacen.addEmpleado(nombre, nit, tel, 0, isVendedor.isSelected());
+                        resetCamposEmpleado();
+                        JOptionPane.showMessageDialog(null, "Empleado añadido", "Añadir Personal", JOptionPane.INFORMATION_MESSAGE);
+
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se ingresaron todos los datos solicitados.",
+                                "Añadir Personal", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    String nombre = inputNombreProveedor.getText();
+                    String nit = inputCcProveedor.getText();
+                    String tel = inputTelProveedor.getText();
+                    if (Almacen.buscarProveedor(nit) != -1) { //Si al buscar no obtiene -1 significa que existe y no agrega nada.
+                        resetCamposProveedor();
+                        JOptionPane.showMessageDialog(null, "Ya existe un proveedor identificado con el NIT ingresado", "Añadir Personal", JOptionPane.ERROR_MESSAGE);
+
+                        //Sino entonces verifica que los campos estén llenos para crear un proveedor (Los campos no pueden ser los que están por defecto).
+                    } else if ((Almacen.soloLetras(nombre) && !nombre.equalsIgnoreCase("Nombre")) && (!Almacen.soloLetras(nit) && !nit.equalsIgnoreCase("nit")) && (!Almacen.soloLetras(tel) && !tel.equalsIgnoreCase("teléfono")) && !inputAddTipoCarro.getSelectedItem().toString().equalsIgnoreCase("tipo de carros")) {
+                        Almacen.addProveedor(nombre, nit, tel, inputAddTipoCarro.getSelectedItem().toString());
+                        resetCamposProveedor();
+                        JOptionPane.showMessageDialog(null, "Proveedor añadido", "Añadir Personal", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se ingresaron todos los datos solicitados.",
+                                "Añadir Personal", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        });
     }
 }
