@@ -51,16 +51,6 @@
           <text value="Nuevo Automovil"/>
         </properties>
       </component>
-      <component id="cd237" class="javax.swing.JButton" binding="botonEditarEstado">
-        <constraints>
-          <grid row="12" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-13947600"/>
-          <foreground color="-262145"/>
-          <text value="Estado y disponibilidad"/>
-        </properties>
-      </component>
       <component id="51202" class="javax.swing.JLabel" binding="tituloBorrarAutomovil">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -221,6 +211,14 @@
         </constraints>
         <properties>
           <text value="Buscar automovil"/>
+        </properties>
+      </component>
+      <component id="724cc" class="javax.swing.JButton" binding="botonEstado">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Estado y Disponibilidad"/>
         </properties>
       </component>
     </children>

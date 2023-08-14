@@ -22,7 +22,6 @@ public class InventarioCampero extends JFrame {
     private JButton botonEditar;
     private JTextField inputEditarPrecio;
     private JButton atrasButton;
-    private JButton botonEditarEstado;
     private JTextField inputBorrarSerial;
     private JTextField inputEditarMarca;
     private JTextField inputEditarSerial;
@@ -31,6 +30,7 @@ public class InventarioCampero extends JFrame {
     private JTextField inputAddModelo;
     private JTextField inputAddMarca;
     private JPanel inventarioCampero;
+    private JButton botonEstado;
 
     public InventarioCampero() {
         setContentPane(inventarioCampero);
@@ -54,6 +54,7 @@ public class InventarioCampero extends JFrame {
         Botones.enviarCrear(botonCrear, inputAddCilindraje, inputAddMarca, inputAddSerial, inputAddModelo, tipoCarro);
         Botones.enviarBorrar(botonBorrar, inputBorrarMarca, inputBorrarSerial, tipoCarro);
         Botones.enviarEditar(botonEditar, inputEditarMarca, inputEditarSerial, inputEditarModelo, inputEditarPrecio, tipoCarro);
+        Botones.botonEstado(botonEstado,this);
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

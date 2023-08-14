@@ -12,7 +12,6 @@ public class InventarioAutomovil extends JFrame {
     private JTextField inputAddModelo;
     private JComboBox inputAddCilindraje;
     private JLabel tituloNuevoAutomovil;
-    private JButton botonEditarEstado;
     private JTextField inputAddMarca;
     private JLabel tituloBorrarAutomovil;
     private JTextField inputBorrarMarca;
@@ -29,6 +28,7 @@ public class InventarioAutomovil extends JFrame {
     private JButton atrasButton;
     private JTextField inputAddSerial;
     private JLabel tituloBuscarAutomovil;
+    private JButton botonEstado;
 
     public InventarioAutomovil() {
         setContentPane(inventarioAutomovil);
@@ -53,6 +53,7 @@ public class InventarioAutomovil extends JFrame {
         Botones.enviarCrear(botonCrear,inputAddCilindraje,inputAddMarca,inputAddSerial,inputAddModelo,tipoCarro);
         Botones.enviarBorrar(botonBorrar,inputBorrarMarca,inputBorrarSerial,tipoCarro);
         Botones.enviarEditar(botonEditar,inputEditarMarca,inputEditarSerial,inputEditarModelo,inputEditarPrecio,tipoCarro);
+        Botones.botonEstado(botonEstado,this);
     }
 
     public void botonAtras(JButton b) {
