@@ -5,13 +5,15 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.time.LocalDate;
 import java.util.Arrays;
- class EAlmacen extends Exception{
 
-     public EAlmacen(String a){
-         super(a);
-     }
+class EAlmacen extends Exception {
 
- }
+    public EAlmacen(String a) {
+        super(a);
+    }
+
+}
+
 public abstract class Almacen {
     private static Carro[] carros;
     private static Cliente[] clientes;
@@ -91,6 +93,7 @@ public abstract class Almacen {
             carros[carros.length - 1] = carro;
         }
     }
+
     public static void addProveedor(String nombre, String nit, String tel, String tipoCarro) {
         if (proveedores == null) {
             proveedores = new Proveedor[1];
@@ -102,33 +105,33 @@ public abstract class Almacen {
     }
 
     public static void addCarro(String marca, String modelo, String serial, Cilindraje tipo, boolean disponible, boolean estado, String tipoCarro) {//Ver cómo involucrar al proveedor
-        switch (tipoCarro.toLowerCase()){
+        switch (tipoCarro.toLowerCase()) {
             case "campero":
                 Campero campero = new Campero(marca, modelo, serial, tipo, disponible, estado);
-                if(carros==null){
+                if (carros == null) {
                     carros = new Carro[1];
                     carros[0] = campero;
-                }else{
+                } else {
                     carros = Arrays.copyOf(carros, carros.length + 1);
                     carros[carros.length - 1] = campero;
                 }
                 break;
             case "deportivo":
                 Deportivo deportivo = new Deportivo(marca, modelo, serial, tipo, disponible, estado);
-                if(carros==null) {
+                if (carros == null) {
                     carros = new Carro[1];
                     carros[0] = deportivo;
-                }else {
+                } else {
                     carros = Arrays.copyOf(carros, carros.length + 1);
                     carros[carros.length - 1] = deportivo;
                 }
                 break;
-            case"automovil":
+            case "automovil":
                 Automovil automovil = new Automovil(marca, modelo, serial, tipo, disponible, estado);
-                if(carros==null) {
+                if (carros == null) {
                     carros = new Carro[1];
                     carros[0] = automovil;
-                }else {
+                } else {
                     carros = Arrays.copyOf(carros, carros.length + 1);
                     carros[carros.length - 1] = automovil;
                     break;
@@ -149,16 +152,16 @@ public abstract class Almacen {
             while (i < proveedores.length && !nit.equals(proveedores[i].getCedula())) {
                 i++;
             }
-            if (i >= proveedores.length ) {
+            if (i >= proveedores.length) {
                 return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
             }
             return i;
         }
     }
 
-    public static int buscarCliente(String cedula) throws EAlmacen{//ver cómo poner con personas
+    public static int buscarCliente(String cedula) throws EAlmacen {//ver cómo poner con personas
         int i = 0;
-        if(clientes==null){
+        if (clientes == null) {
             throw new EAlmacen("No existe el cliente");
         }
         while (i < clientes.length && !cedula.equals(clientes[i].getCedula())) {
@@ -179,24 +182,26 @@ public abstract class Almacen {
             while (i < empleados.length && !cedula.equals(empleados[i].getCedula())) {
                 i++;
             }
-            if (i >= empleados.length ) {
+            if (i >= empleados.length) {
                 return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
             }
             return i;
         }
     }
 
-    public static int buscarCarro(String marca, String modelo) { //Buscar por marca y modelo y que muestre las cilindradas;
+    public static int buscarCarro(String marca, String serial) { //Buscar por marca y modelo y que muestre las cilindradas;
         int i = 0;
-        while (!marca.equals(carros[i].getMarca()) && !modelo.equals(carros[i].getModelo()) && i < carros.length) {
-            i++;
-            if (i == carros.length) {
-                System.out.println("El carro no existe");
-
+        if (carros == null) {//Si es null envía -1 para indicar que no existe
+            return -1;
+        } else {
+            while (i < empleados.length && (!serial.equals(carros[i].getSerial()) && !marca.equalsIgnoreCase(carros[i].getMarca()))) {
+                i++;
             }
+            if (i >= empleados.length) {
+                return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
+            }
+            return i;
         }
-
-        return i;
     }
 
     public static void delCliente(String cedula) {//ver cómo poner con personas

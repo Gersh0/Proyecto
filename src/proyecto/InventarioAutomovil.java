@@ -48,10 +48,11 @@ public class InventarioAutomovil extends JFrame {
         Almacen.focus(inputEditarPrecio, "Precio");
         Almacen.focus(inputEditarSerial, "Serial");
         botonAtras(atrasButton);
-        enviarFormulario(botonBuscar);
-        enviarFormulario(botonCrear);
-        enviarFormulario(botonBorrar);
-        enviarFormulario(botonEditar);
+        String tipoCarro = "Automovil";
+        Botones.enviarBuscar(botonBuscar,inputBuscarMarca,inputBuscarSerial,tipoCarro);
+        Botones.enviarCrear(botonCrear,inputAddCilindraje,inputAddMarca,inputAddSerial,inputAddModelo,tipoCarro);
+        Botones.enviarBorrar(botonBorrar,inputBorrarMarca,inputBorrarSerial,tipoCarro);
+        Botones.enviarEditar(botonEditar,inputEditarMarca,inputEditarSerial,inputEditarModelo,inputEditarPrecio,tipoCarro);
     }
 
     public void botonAtras(JButton b) {
@@ -64,7 +65,7 @@ public class InventarioAutomovil extends JFrame {
         });
     }
 
-    public void enviarFormulario(JButton b) {
+   /* public void enviarFormulario(JButton b) {
 
         b.addActionListener(new ActionListener() {
             @Override
@@ -123,13 +124,13 @@ public class InventarioAutomovil extends JFrame {
                     case "borrar":
                         String buscarMarca = inputBorrarMarca.getText();
                         String buscarSerial = inputBorrarSerial.getText();
-                        if(Almacen.buscarCarro(buscarMarca, buscarSerial)==-1){
-                            JOptionPane.showMessageDialog(null, "No existe un automóvil de la marca "+buscarMarca+" con el serial ingresado.",
+                        if (Almacen.buscarCarro(buscarMarca, buscarSerial) == -1) {
+                            JOptionPane.showMessageDialog(null, "No existe un automóvil de la marca " + buscarMarca + " con el serial ingresado.",
                                     "Automóvil", JOptionPane.ERROR_MESSAGE);
                             inputBorrarMarca.setText("Marca");
                             inputBorrarSerial.setText("Serial");
-                        }else{
-                            Almacen.delCarro(buscarMarca,buscarSerial);
+                        } else {
+                            Almacen.delCarro(buscarMarca, buscarSerial);
                             inputBorrarMarca.setText("Marca");
                             inputBorrarSerial.setText("Serial");
                             JOptionPane.showMessageDialog(null, "Automóvil borrado correctamente.",
@@ -140,20 +141,20 @@ public class InventarioAutomovil extends JFrame {
                         String editarMarca = inputEditarMarca.getText();
                         String editarSerial = inputEditarSerial.getText();
                         int indexEditar = Almacen.buscarCarro(editarMarca, editarSerial);
-                        try{
-                            if (Almacen.getCarros()[indexEditar] instanceof Automovil){
+                        try {
+                            if (Almacen.getCarros()[indexEditar] instanceof Automovil) {
                                 Automovil a = (Automovil) Almacen.getCarros()[indexEditar];
                                 a.setModelo(inputEditarModelo.getText());
                                 a.setPrecio(inputEditarPrecio.getText());
                                 JOptionPane.showMessageDialog(null, "Automóvil editado correctamente.",
                                         "Automóvil", JOptionPane.INFORMATION_MESSAGE);
-                            }else{
-                                JOptionPane.showMessageDialog(null, "No existe un automóvil de la marca "+editarMarca+" con el serial ingresado.",
+                            } else {
+                                JOptionPane.showMessageDialog(null, "No existe un automóvil de la marca " + editarMarca + " con el serial ingresado.",
                                         "Automóvil", JOptionPane.ERROR_MESSAGE);
                             }
-                        }catch(ArrayIndexOutOfBoundsException ex){
+                        } catch (ArrayIndexOutOfBoundsException ex) {
                             System.out.println(ex);
-                            JOptionPane.showMessageDialog(null, "No existe un automóvil de la marca "+editarMarca+" con el serial ingresado.",
+                            JOptionPane.showMessageDialog(null, "No existe un automóvil de la marca " + editarMarca + " con el serial ingresado.",
                                     "Automóvil", JOptionPane.ERROR_MESSAGE);
                         }
                         inputEditarMarca.setText("Marca");
@@ -164,7 +165,7 @@ public class InventarioAutomovil extends JFrame {
                 }
             }
         });
-    }
+    }*/
 
 
 }
