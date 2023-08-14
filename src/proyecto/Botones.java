@@ -14,7 +14,7 @@ public abstract class Botones {
                 int index = Almacen.buscarCarro(inputBuscarMarca.getText(), inputBuscarSerial.getText());
                 try {
                     JOptionPane.showMessageDialog(null,
-                            "Nombre: " + Almacen.getCarros()[index].getMarca() +
+                            "Marca: " + Almacen.getCarros()[index].getMarca() +
                                     "\nModelo: " + Almacen.getCarros()[index].getModelo() +
                                     "\nPrecio: $" + Almacen.getCarros()[index].getPrecio(),
                             tipoCarro, JOptionPane.INFORMATION_MESSAGE);

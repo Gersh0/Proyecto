@@ -194,10 +194,10 @@ public abstract class Almacen {
         if (carros == null) {//Si es null envía -1 para indicar que no existe
             return -1;
         } else {
-            while (i < empleados.length && (!serial.equals(carros[i].getSerial()) && !marca.equalsIgnoreCase(carros[i].getMarca()))) {
+            while ((i < carros.length) && !(serial.equals(carros[i].getSerial()) && marca.equalsIgnoreCase(carros[i].getMarca()))) {
                 i++;
             }
-            if (i >= empleados.length) {
+            if (i >= carros.length) {
                 return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
             }
             return i;
