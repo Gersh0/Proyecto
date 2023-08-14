@@ -137,12 +137,15 @@ public abstract class Botones {
                 inputEditarSerial.setText("Serial");
             }
         });
+    }
 
-      /*  botonEstado.addActionListener(new ActionListener() {
+    public static void botonEstado(JButton b, JFrame f) {
+        b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new EditarDisponibilidad();
+                f.dispose();
             }
-        });*/
+        });
     }
 }
