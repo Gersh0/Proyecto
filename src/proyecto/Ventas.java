@@ -3,6 +3,7 @@ package proyecto;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 public class Ventas extends JFrame {
     private JPanel Ventas;
@@ -57,9 +58,13 @@ public class Ventas extends JFrame {
                     else{
                         int posicionCliente=Almacen.buscarCliente(inputAddCliente.getText());
                         int posicionEmpleado=Almacen.buscarEmpleado(inputAddVendedor.getText());
-
-                            Cliente c1=Almacen.getClientes()[posicionCliente];
-
+                        int carroPos=Almacen.buscarCarro(inputAddCarroMarca.getText(),inputAddCarroModelo.getText());
+                        Cliente c1=Almacen.getClientes()[posicionCliente];
+                        Vendedor v1=(Vendedor)Almacen.getEmpleados()[posicionEmpleado];
+                        Carro carro=Almacen.getCarros()[carroPos];
+                        String formaPago=inputAddFormaDePAgo.getSelectedItem().toString();
+                        //To Do organizar el tipo de Pago
+                        Almacen.addVenta(v1,c1,carro, LocalDate.now(),MP.CREDITO);
                             //Almacen.addVenta(inputNombreEmpleado.getText(), inputCcEmpleado.getText(),
                             //   inputTelefonoEmpleado.getText(), 0);//
                             JOptionPane.showMessageDialog(null, "Empleado añadido",
