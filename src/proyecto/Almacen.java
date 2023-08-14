@@ -48,7 +48,7 @@ public abstract class Almacen {
     }
 
     public static void addCliente(String nombre, String cedula, String tel) {
-        if (clientes[0] == null) {
+        if (clientes == null) {
             clientes = new Cliente[1];
             clientes[0] = new Cliente(nombre, cedula, tel);
         } else {
@@ -89,19 +89,34 @@ public abstract class Almacen {
         switch (tipoCarro.toLowerCase()){
             case "campero":
                 Campero campero = new Campero(marca, modelo, serial, tipo, disponible, estado);
-                carros = Arrays.copyOf(carros, carros.length + 1);
-                carros[carros.length - 1] = campero;
+                if(carros==null){
+                    carros = new Carro[1];
+                    carros[0] = campero;
+                }else{
+                    carros = Arrays.copyOf(carros, carros.length + 1);
+                    carros[carros.length - 1] = campero;
+                }
                 break;
             case "deportivo":
                 Deportivo deportivo = new Deportivo(marca, modelo, serial, tipo, disponible, estado);
-                carros = Arrays.copyOf(carros, carros.length + 1);
-                carros[carros.length - 1] = deportivo;
+                if(carros==null) {
+                    carros = new Carro[1];
+                    carros[0] = deportivo;
+                }else {
+                    carros = Arrays.copyOf(carros, carros.length + 1);
+                    carros[carros.length - 1] = deportivo;
+                }
                 break;
             case"automovil":
                 Automovil automovil = new Automovil(marca, modelo, serial, tipo, disponible, estado);
-                carros = Arrays.copyOf(carros, carros.length + 1);
-                carros[carros.length - 1] = automovil;
-                break;
+                if(carros==null) {
+                    carros = new Carro[1];
+                    carros[0] = automovil;
+                }else {
+                    carros = Arrays.copyOf(carros, carros.length + 1);
+                    carros[carros.length - 1] = automovil;
+                    break;
+                }
         }
     }
 
