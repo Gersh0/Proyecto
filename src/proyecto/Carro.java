@@ -40,6 +40,10 @@ public class Carro {
         return placa;
     }
 
+    public double getPrecio() {
+        return precio;
+    }
+
     public boolean isEstado() {
         return estado;
     }
@@ -60,8 +64,9 @@ public class Carro {
         this.placa = placa;
     }
 
-    public double getPrecio() {
-        return precio;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
+
 
 }

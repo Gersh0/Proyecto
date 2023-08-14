@@ -8,7 +8,7 @@ public class InventarioDeportivos extends JFrame{
     private JLabel tituloInventarioDeportivos;
     private JLabel tituloBuscarDeportivo;
     private JTextField inputBuscarMarca;
-    private JTextField inputBuscarModelo;
+    private JTextField inputBuscarSerial;
     private JLabel tituloBuscarMarca;
     private JLabel tituloBuscarModelo;
     private JLabel tituloNuevoDeportivo;
@@ -48,7 +48,7 @@ public class InventarioDeportivos extends JFrame{
         Almacen.focus(inputBorrarMarca,"Marca");
         Almacen.focus(inputBorrarSerial,"Serial");
         Almacen.focus(inputBuscarMarca,"Marca");
-        Almacen.focus(inputBuscarModelo,"Modelo");
+        Almacen.focus(inputBuscarSerial,"Modelo");
         Almacen.focus(inputEditarMarca,"Marca");
         Almacen.focus(inputEditarModelo,"Modelo");
         Almacen.focus(inputEditarPrecio,"Precio");

@@ -58,8 +58,20 @@ public class DatosTrabajadores extends JFrame {
         buscarProveedor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Método aún no implemnentado.",
-                        "Proveedor", JOptionPane.INFORMATION_MESSAGE);
+                try{
+                   Proveedor provTemp = Almacen.getProveedores()[Almacen.buscarProveedor(inputCcProveedor.getText())];
+                    JOptionPane.showMessageDialog(null,
+                            "Nombre: "+ provTemp.getNombre()+
+                                    "\nTeléfono: "+ provTemp.getTel(),
+                            "Proveedor", JOptionPane.INFORMATION_MESSAGE);
+                    inputCcEmpleado.setText("NIT");
+                }catch(ArrayIndexOutOfBoundsException a){
+                    System.out.println(a);
+                    inputCcProveedor.setText("NIT");
+                    JOptionPane.showMessageDialog(null,
+                            "La cédula ingresada no coincide con ningún empleado registrado.",
+                            "Empleado(a)", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }
