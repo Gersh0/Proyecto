@@ -3,10 +3,10 @@ package proyecto;
 public class Vendedor extends Empleado {
     private int ventasRealizadas;
 
-    public Vendedor(String nombre, String cc, String tel, double salario, int ventasRealizadas) {
+    public Vendedor(String nombre, String cc, String tel, double salario) {
         super(nombre, cc, tel, salario);
 
-        this.ventasRealizadas = ventasRealizadas;
+        this.ventasRealizadas = 0;
     }
 
     public int getVentasRealizadas() {
