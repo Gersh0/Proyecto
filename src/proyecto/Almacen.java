@@ -7,7 +7,13 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.time.LocalDate;
 import java.util.Arrays;
+ class EAlmacen extends Exception{
 
+     public EAlmacen(String a){
+         super(a);
+     }
+
+ }
 public abstract class Almacen {
     private static Carro[] carros;
     private static Cliente[] clientes;
@@ -45,7 +51,7 @@ public abstract class Almacen {
     }
 
     public static void addCliente(String nombre, String cedula, String tel) {
-        if (clientes[0] == null) {
+        if (clientes== null) {
             clientes = new Cliente[1];
             clientes[0] = new Cliente(nombre, cedula, tel);
         } else {
@@ -65,21 +71,32 @@ public abstract class Almacen {
     }
 
     public static void addCarro(String marca, String modelo, String serial, Cilindraje tipo, boolean disponible, boolean estado) {//Ver cómo involucrar al proveedor
-        Carro carro = new Carro(marca, modelo, serial, tipo, disponible, estado);
-        carros = Arrays.copyOf(carros, carros.length + 1);
-        carros[carros.length - 1] = carro;
+        if(carros==null){
+            carros=new Carro[1];
+            carros[0]=new Carro(marca, modelo, serial, tipo, estado, disponible);
+        }
+        else{
+            Carro carro = new Carro(marca, modelo, serial, tipo, disponible, estado);
+            carros = Arrays.copyOf(carros, carros.length + 1);
+            carros[carros.length - 1] = carro;
+        }
+
     }
 
     public static void addVenta(Vendedor vendedor, Cliente cliente, Carro carro, LocalDate fecha, MP formaDePago) {
         cliente.registrarCompra(new Venta(vendedor, cliente, carro, fecha, formaDePago));
     }
 
-    public static int buscarCliente(String cedula) {//ver cómo poner con personas
+    public static int buscarCliente(String cedula) throws  EAlmacen{//ver cómo poner con personas
         int i = 0;
-        while (!cedula.equals(clientes[i].getCedula()) && i < clientes.length) {
+        if(clientes==null){
+            throw new EAlmacen("No existe el cliente");
+        }
+        while (i < clientes.length && !cedula.equals(clientes[i].getCedula())) {
             i++;
             if (i == clientes.length) {
-                System.out.println("El usuario no existe");
+                throw new EAlmacen("No existe el cliente");
+
             }
         }
         return i;
@@ -87,10 +104,13 @@ public abstract class Almacen {
 
     public static int buscarEmpleado(String cedula) {
         int i = 0;
-        while (!cedula.equals(empleados[i].getCedula()) && i < empleados.length) {
+
+
+        while ( i < empleados.length && !cedula.equals(empleados[i].getCedula())) {
             i++;
             if (i == empleados.length) {
                 System.out.println("El usuario no existe");
+                i=-1;
 
             }
         }

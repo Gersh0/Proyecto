@@ -18,7 +18,7 @@ public class DatosTrabajadores extends JFrame {
 
     public DatosTrabajadores() {
         setContentPane(datosTrabajadores);
-        setTitle("Hola");
+        setTitle("Personal");
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);

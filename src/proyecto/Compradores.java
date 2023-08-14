@@ -37,5 +37,104 @@ public class Compradores extends JFrame {
                 dispose();
             }
         });
+
+        botonCrarComprador.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombre=inputNombreNuevo.getText();
+                String tel=inputTelNuevo.getText();
+                String cc=inputCcNuevo.getText();
+                try{
+
+                    if(nombre.equals("Nombre") ||
+                            tel.equals("Teléfono")||
+                            cc.equals("Cédula")
+                    ){
+                        JOptionPane.showMessageDialog(null, "Campos vacios",
+                                "Añadir usuario", JOptionPane.ERROR_MESSAGE);
+                    }
+                    //Si ya existe devuelve la posición, si no existe devuelve -1 y lo crea
+                    else{
+                        /*Almacen.buscarCliente(cc);
+                        JOptionPane.showMessageDialog(null, "Este cliente ya existe",
+                                "Añadir usuario", JOptionPane.ERROR_MESSAGE);*/
+                        Almacen.addCliente(nombre,tel,cc);
+                        JOptionPane.showMessageDialog(null, "Se añadió el usuario",
+                                "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
+                    }
+
+
+                }
+                catch (Exception e3){
+
+                }
+
+
+
+            }
+        });
+
+        botonBuscarComprador.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String cc=inputCcBuscar.getText();
+                try{
+
+                    if(cc.equals("Cédula")
+                    ){
+                        JOptionPane.showMessageDialog(null, "Campos vacios",
+                                "Añadir usuario", JOptionPane.ERROR_MESSAGE);
+                    }
+                    //Si ya existe devuelve la posición, si no existe devuelve -1 y lo crea
+                    else{
+                        Cliente a = Almacen.getClientes()[Almacen.buscarCliente(cc)];
+
+                        JOptionPane.showMessageDialog(null, a.getNombre()+" "+a.getCantVentas(),
+                                "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
+                    }
+
+
+                }
+                catch (EAlmacen e3){
+                    JOptionPane.showMessageDialog(null, "La cédula no está registrada",
+                            "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+
+
+            }
+        });
+        botonBorrarUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String cc=inputBorrarCc.getText();
+                try{
+
+                    if(cc.equals("Cédula")
+                    ){
+                        JOptionPane.showMessageDialog(null, "Campos vacios",
+                                "Añadir usuario", JOptionPane.ERROR_MESSAGE);
+                    }
+                    //Si ya existe devuelve la posición, si no existe devuelve -1 y lo crea
+                    else{
+                        Cliente a = Almacen.getClientes()[Almacen.buscarCliente(cc)];
+                        Almacen.delCliente(cc);
+                        JOptionPane.showMessageDialog(null, "El cliente hasido borrado",
+                                "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
+                    }
+
+
+                }
+                catch (EAlmacen e3){
+                    JOptionPane.showMessageDialog(null, "La cédula no está registrada",
+                            "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+
+
+            }
+        });
     }
 }
