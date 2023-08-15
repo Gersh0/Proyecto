@@ -89,7 +89,7 @@ public class Ventas extends JFrame {
                             try {//Puse estp porque tira Unhandled Exception- Att, German.
                                 JOptionPane.showMessageDialog(null, "Venta añadida"+v.getCodigo()+" "+v.calcularVenta(),
                                         "Añadir venta", JOptionPane.INFORMATION_MESSAGE);
-                            } catch (Eventas ex) {
+                            } catch (Exception ex) {
                                 throw new RuntimeException(ex);
                             }
 
