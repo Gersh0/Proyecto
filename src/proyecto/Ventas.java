@@ -29,11 +29,11 @@ public class Ventas extends JFrame {
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        Almacen.focus(inputAddCliente, "Cedula Cliente");
-        Almacen.focus(inputAddVendedor, "Cedula Vendedor");
-        Almacen.focus(inputBuscarCodigoVenta, "Codigo");
-        Almacen.focus(inputAddCarroModelo, "Modelo");
-        Almacen.focus(inputAddCarroMarca, "Marca");
+        Botones.focus(inputAddCliente, "Cedula Cliente");
+        Botones.focus(inputAddVendedor, "Cedula Vendedor");
+        Botones.focus(inputBuscarCodigoVenta, "Codigo");
+        Botones.focus(inputAddCarroModelo, "Modelo");
+        Botones.focus(inputAddCarroMarca, "Marca");
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,7 +46,7 @@ public class Ventas extends JFrame {
             public void actionPerformed(ActionEvent e)  {
                 try {
                     System.out.println(inputAddCliente.getText());
-                    
+
                     if(inputAddCliente.getText().equals("Cedula Cliente") ||
                             inputAddVendedor.getText().equals("Cedula Vendedor")||
                             inputAddCarroModelo.getText().equals("Modelo")||
@@ -71,10 +71,10 @@ public class Ventas extends JFrame {
                                     "Añadir empleado", JOptionPane.INFORMATION_MESSAGE);
                         }
 
-                        //JOptionPane.showMessageDialog(null, Almacen.getCarros().length);
+                //JOptionPane.showMessageDialog(null, Almacen.getCarros().length);
 
                 }
-                catch (EAlmacen e1){
+                catch (ArrayIndexOutOfBoundsException e1){
                     JOptionPane.showMessageDialog(null, "Datos erróneos",
                             "Error", JOptionPane.ERROR_MESSAGE);
                 }

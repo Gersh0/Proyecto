@@ -7,11 +7,9 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 class EAlmacen extends Exception {
-
     public EAlmacen(String a) {
         super(a);
     }
-
 }
 
 public abstract class Almacen {
@@ -143,9 +141,9 @@ public abstract class Almacen {
         cliente.registrarCompra(new Venta(vendedor, cliente, carro, fecha, formaDePago));
     }
 
-
     public static int buscarProveedor(String nit) {//ver cómo poner con personas
         int i = 0;
+
         if (proveedores == null) {//Si es null envía -1 para indicar que no existe
             return -1;
         } else {
@@ -159,19 +157,19 @@ public abstract class Almacen {
         }
     }
 
-    public static int buscarCliente(String cedula) throws EAlmacen {//ver cómo poner con personas
+    public static int buscarCliente(String cedula){//ver cómo poner con personas
         int i = 0;
-        if (clientes == null) {
-            throw new EAlmacen("No existe el cliente");
-        }
-        while (i < clientes.length && !cedula.equals(clientes[i].getCedula())) {
-            i++;
-            if (i == clientes.length) {
-                throw new EAlmacen("No existe el cliente");
-
+        if (clientes == null) {//Si es null envía -1 para indicar que no existe
+            return -1;
+        } else {
+            while (i < clientes.length && !cedula.equals(clientes[i].getCedula())) {
+                i++;
             }
+            if (i >= clientes.length) {
+                return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
+            }
+            return i;
         }
-        return i;
     }
 
     public static int buscarEmpleado(String cedula) throws ArrayIndexOutOfBoundsException {
@@ -193,7 +191,7 @@ public abstract class Almacen {
         int i = 0;
         if (carros == null) {//Si es null envía -1 para indicar que no existe
             return -1;
-        } else {
+        } else {//Sino procede con búsqueda:  para detener el ciclo el index(i) debe ser mayor que el length del arreglo y, a su vez, los dos datos ingresados deben coincidir con algún carro del arreglo.
             while ((i < carros.length) && !(serial.equals(carros[i].getSerial()) && marca.equalsIgnoreCase(carros[i].getMarca()))) {
                 i++;
             }
@@ -253,26 +251,6 @@ public abstract class Almacen {
 
     public static int CantidadClientesHastaAhora() {
         return clientes.length;
-    }
-
-    public static void focus(JTextField c, String texto) {
-        c.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if (c.getText().contains(texto)) {
-                    c.setText("");
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if (!c.getText().equals("")) {
-
-                } else {
-                    c.setText(texto);
-                }
-            }
-        });
     }
 
     public static boolean soloLetras(String texto) {

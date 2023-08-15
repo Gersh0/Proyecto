@@ -43,10 +43,10 @@ public class AdicionarTrabajadores extends JFrame {
     }
 
     public void defaultCamposEmpleado() {
-        Almacen.focus(inputNombreEmpleado, "Nombre");
-        Almacen.focus(inputCcEmpleado, "Cédula");
-        Almacen.focus(inputTelefonoEmpleado, "Teléfono");
-        Almacen.focus(inputBorrarEmpleado, "Cédula");
+        Botones.focus(inputNombreEmpleado, "Nombre");
+        Botones.focus(inputCcEmpleado, "Cédula");
+        Botones.focus(inputTelefonoEmpleado, "Teléfono");
+        Botones.focus(inputBorrarEmpleado, "Cédula");
     }
 
     public void resetCamposEmpleado(){
@@ -56,10 +56,10 @@ public class AdicionarTrabajadores extends JFrame {
         isVendedor.setSelected(false);
     }
     public void defaultCamposProveedor() {
-        Almacen.focus(inputNombreProveedor, "Nombre");
-        Almacen.focus(inputCcProveedor, "NIT");
-        Almacen.focus(inputTelProveedor, "Teléfono");
-        Almacen.focus(inputBorrarProveedor, "NIT");
+        Botones.focus(inputNombreProveedor, "Nombre");
+        Botones.focus(inputCcProveedor, "NIT");
+        Botones.focus(inputTelProveedor, "Teléfono");
+        Botones.focus(inputBorrarProveedor, "NIT");
         inputAddTipoCarro.setSelectedItem("Tipo de Carros");
     }
     public void resetCamposProveedor(){

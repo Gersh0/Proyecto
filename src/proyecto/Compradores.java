@@ -25,11 +25,11 @@ public class Compradores extends JFrame {
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        Almacen.focus(inputBorrarCc, "Cédula");
-        Almacen.focus(inputCcBuscar, "Cédula");
-        Almacen.focus(inputCcNuevo, "Cédula");
-        Almacen.focus(inputTelNuevo, "Teléfono");
-        Almacen.focus(inputNombreNuevo, "Nombre");
+        Botones.focus(inputBorrarCc, "Cédula");
+        Botones.focus(inputCcBuscar, "Cédula");
+        Botones.focus(inputCcNuevo, "Cédula");
+        Botones.focus(inputTelNuevo, "Teléfono");
+        Botones.focus(inputNombreNuevo, "Nombre");
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -74,31 +74,27 @@ public class Compradores extends JFrame {
 
         botonBuscarComprador.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-
-                String cc = inputCcBuscar.getText();
+            public void actionPerformed(ActionEvent e) throws ArrayIndexOutOfBoundsException {
                 try {
-
-                    if (cc.equals("Cédula")
+                    Cliente cliente = Almacen.getClientes()[Almacen.buscarCliente(inputCcBuscar.getText())];
+                    if (inputCcBuscar.equals("Cédula")
                     ) {
                         JOptionPane.showMessageDialog(null, "Campos vacios",
                                 "Añadir usuario", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null,
+                                "Nombre: " + cliente.getNombre() +
+                                        "\nCédula: " + cliente.getCedula(),
+                                "Cliente", JOptionPane.INFORMATION_MESSAGE);
+                        inputCcBuscar.setText("Cédula");
                     }
-                    //Si ya existe devuelve la posición, si no existe devuelve -1 y lo crea
-                    else {
-                        Cliente a = Almacen.getClientes()[Almacen.buscarCliente(cc)];
-
-                        JOptionPane.showMessageDialog(null, "Nombre: " + a.getNombre() + " \nCompras realizadas: " + a.getCantVentas(),
-                                "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
-                    }
-
-
-                } catch (EAlmacen e3) {
-                    JOptionPane.showMessageDialog(null, "La cédula no está registrada",
-                            "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
+                } catch (ArrayIndexOutOfBoundsException a) {
+                    System.out.println(a);
+                    inputCcBuscar.setText("Cédula");
+                    JOptionPane.showMessageDialog(null,
+                            "La cédula ingresada no coincide con ningún empleado registrado.",
+                            "Empleado(a)", JOptionPane.ERROR_MESSAGE);
                 }
-                inputCcBuscar.setText("Cédula");
-
             }
         });
         botonBorrarUsuario.addActionListener(new ActionListener() {
@@ -121,7 +117,7 @@ public class Compradores extends JFrame {
                                 "Editar usuario", JOptionPane.INFORMATION_MESSAGE);
                     }
 
-                } catch (EAlmacen e3) {
+                } catch (ArrayIndexOutOfBoundsException e3) {
                     JOptionPane.showMessageDialog(null, "La cédula no está registrada",
                             "Editar usuario", JOptionPane.INFORMATION_MESSAGE);
                 }

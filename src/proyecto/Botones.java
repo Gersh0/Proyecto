@@ -1,8 +1,11 @@
 package proyecto;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 public abstract class Botones {
 
@@ -30,6 +33,7 @@ public abstract class Botones {
                 }
             }
         });
+
     }
 
     public static void enviarCrear(JButton b, JComboBox inputAddCilindraje, JTextField inputAddMarca, JTextField inputAddSerial, JTextField inputAddModelo, String tipoCarro) {
@@ -148,4 +152,26 @@ public abstract class Botones {
             }
         });
     }
+
+
+    public static void focus(JTextField c, String texto) {
+        c.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (c.getText().contains(texto)) {
+                    c.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (!c.getText().equals("")) {
+
+                } else {
+                    c.setText(texto);
+                }
+            }
+        });
+    }
 }
+
