@@ -1,8 +1,5 @@
 package proyecto;
 
-import javax.swing.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -157,7 +154,7 @@ public abstract class Almacen {
         }
     }
 
-    public static int buscarCliente(String cedula){//ver cómo poner con personas
+    public static int buscarCliente(String cedula) {//ver cómo poner con personas
         int i = 0;
         if (clientes == null) {//Si es null envía -1 para indicar que no existe
             return -1;

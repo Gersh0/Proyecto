@@ -54,7 +54,7 @@ public class InventarioCampero extends JFrame {
         Botones.enviarCrear(botonCrear, inputAddCilindraje, inputAddMarca, inputAddSerial, inputAddModelo, tipoCarro);
         Botones.enviarBorrar(botonBorrar, inputBorrarMarca, inputBorrarSerial, tipoCarro);
         Botones.enviarEditar(botonEditar, inputEditarMarca, inputEditarSerial, inputEditarModelo, inputEditarPrecio, tipoCarro);
-        Botones.botonEstado(botonEstado,this);
+        Botones.botonEstado(botonEstado, this);
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

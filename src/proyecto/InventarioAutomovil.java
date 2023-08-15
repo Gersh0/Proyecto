@@ -49,11 +49,11 @@ public class InventarioAutomovil extends JFrame {
         Botones.focus(inputEditarSerial, "Serial");
         botonAtras(atrasButton);
         String tipoCarro = "Automovil";
-        Botones.enviarBuscar(botonBuscar,inputBuscarMarca,inputBuscarSerial,tipoCarro);
-        Botones.enviarCrear(botonCrear,inputAddCilindraje,inputAddMarca,inputAddSerial,inputAddModelo,tipoCarro);
-        Botones.enviarBorrar(botonBorrar,inputBorrarMarca,inputBorrarSerial,tipoCarro);
-        Botones.enviarEditar(botonEditar,inputEditarMarca,inputEditarSerial,inputEditarModelo,inputEditarPrecio,tipoCarro);
-        Botones.botonEstado(botonEstado,this);
+        Botones.enviarBuscar(botonBuscar, inputBuscarMarca, inputBuscarSerial, tipoCarro);
+        Botones.enviarCrear(botonCrear, inputAddCilindraje, inputAddMarca, inputAddSerial, inputAddModelo, tipoCarro);
+        Botones.enviarBorrar(botonBorrar, inputBorrarMarca, inputBorrarSerial, tipoCarro);
+        Botones.enviarEditar(botonEditar, inputEditarMarca, inputEditarSerial, inputEditarModelo, inputEditarPrecio, tipoCarro);
+        Botones.botonEstado(botonEstado, this);
     }
 
     public void botonAtras(JButton b) {
