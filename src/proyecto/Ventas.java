@@ -56,7 +56,7 @@ public class Ventas extends JFrame {
                     int posicionCliente = Almacen.buscarCliente(inputAddCliente.getText());
                     int posicionEmpleado = Almacen.buscarEmpleado(inputAddVendedor.getText());
                     int carroPos = Almacen.buscarCarro(inputAddCarroMarca.getText(), inputAddCarroModelo.getText());
-                    if (carroPos == -1 || posicionCliente == -1 || posicionEmpleado == -1 || !Almacen.getCarros()[carroPos].getPlaca().isEmpty()) {
+                    if (carroPos == -1 || posicionCliente == -1 || posicionEmpleado == -1 || Almacen.getCarros()[carroPos].getPlaca().equalsIgnoreCase("")) {
                         JOptionPane.showMessageDialog(null, "Faltan datos o el vehículo no está disponible",
                                 "Añadir usuario", JOptionPane.ERROR_MESSAGE);
                         inputAddCliente.setText("Cedula Cliente");

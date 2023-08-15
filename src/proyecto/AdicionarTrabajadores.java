@@ -25,6 +25,7 @@ public class AdicionarTrabajadores extends JFrame {
     private JButton botonBorrarProveedor;
     private JButton atrasButton;
     private JComboBox inputAddTipoCarro;
+    private JTextField inputSalario;
 
     public AdicionarTrabajadores() {
         setContentPane(adicionarTrabajadores);
