@@ -9,8 +9,8 @@ public class EditarDisponibilidad extends JFrame{
     private JLabel tituloDisponibilidad;
     private JTextField inputEstadoMarca;
     private JTextField inputDisponibilidadMarca;
-    private JTextField inputEstadoModelo;
-    private JTextField inputDisponibilidadModelo;
+    private JTextField inputEstadoSerial;
+    private JTextField inputDisponibilidadSerial;
     private JCheckBox isEstado;
     private JCheckBox isDisponible;
     private JPanel editarDisponibilidad;
@@ -25,11 +25,11 @@ public class EditarDisponibilidad extends JFrame{
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         Almacen.focus(inputEstadoMarca,"Marca");
-        Almacen.focus(inputDisponibilidadModelo,"Modelo");
-        Almacen.focus(inputEstadoModelo,"Modelo");
+        Almacen.focus(inputDisponibilidadSerial,"Serial");
+        Almacen.focus(inputEstadoSerial,"Serial");
         Almacen.focus(inputDisponibilidadMarca,"Marca");
-        Botones.botonEditarEstado(botoneditarEstado ,inputEstadoMarca,  inputEstadoModelo, isEstado.isSelected());
-        Botones.botonEditarDisponibilidad(botonEditarDisponibilidad,inputEstadoMarca,inputEstadoModelo,isDisponible.isSelected());
+        Botones.botonEditarEstado(botoneditarEstado ,inputEstadoMarca, inputEstadoSerial, isEstado.isSelected());
+        Botones.botonEditarDisponibilidad(botonEditarDisponibilidad,inputEstadoMarca, inputEstadoSerial,isDisponible.isSelected());
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

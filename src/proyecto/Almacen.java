@@ -241,8 +241,8 @@ public abstract class Almacen {
         }
     }
 
-    public static void editEstado(String marca, String modelo, boolean disponible) {
-        int indexCarro = buscarCarro(marca, modelo);
+    public static void editEstado(String marca, String serial, boolean disponible) {
+        int indexCarro = buscarCarro(marca, serial);
         if (indexCarro != -1) {
             carros[indexCarro].setEstado(disponible);
         }
