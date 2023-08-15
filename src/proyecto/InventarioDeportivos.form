@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="9cbe2" class="javax.swing.JTextField" binding="inputNuevaMarca">
+      <component id="9cbe2" class="javax.swing.JTextField" binding="inputAddMarca">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -18,7 +18,7 @@
           <text value="Marca"/>
         </properties>
       </component>
-      <component id="a569c" class="javax.swing.JTextField" binding="inputNuevoModelo">
+      <component id="a569c" class="javax.swing.JTextField" binding="inputAddModelo">
         <constraints>
           <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -28,32 +28,12 @@
           <text value="Modelo"/>
         </properties>
       </component>
-      <component id="89de4" class="javax.swing.JTextField" binding="inputNuevoCilindraje">
-        <constraints>
-          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Cilindraje"/>
-        </properties>
-      </component>
       <component id="8c4ec" class="javax.swing.JLabel" binding="tituloNuevoDeportivo">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Nuevo Automovil"/>
-        </properties>
-      </component>
-      <component id="cd237" class="javax.swing.JButton" binding="botonEstado">
-        <constraints>
-          <grid row="12" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-6682869"/>
-          <foreground color="-262145"/>
-          <text value="Estado y disponibilidad"/>
+          <text value="Nuevo deportivo"/>
         </properties>
       </component>
       <component id="51202" class="javax.swing.JLabel" binding="tituloBorrarDeportivo">
@@ -61,7 +41,7 @@
           <grid row="6" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="BorrarAutomovil"/>
+          <text value="Borrar deportivo"/>
         </properties>
       </component>
       <component id="5c66f" class="javax.swing.JTextField" binding="inputBorrarMarca">
@@ -89,7 +69,7 @@
           <grid row="9" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Editar automovil"/>
+          <text value="Editar deportivo"/>
         </properties>
       </component>
       <component id="c77bb" class="javax.swing.JTextField" binding="inputEditarMarca">
@@ -169,7 +149,7 @@
           <grid row="0" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Inventario automoviles"/>
+          <text value="Inventario Deportivos"/>
         </properties>
       </component>
       <component id="4ce45" class="javax.swing.JTextField" binding="inputAddSerial">
@@ -200,14 +180,14 @@
           <text value="Marca"/>
         </properties>
       </component>
-      <component id="19491" class="javax.swing.JTextField" binding="inputBuscarModelo">
+      <component id="19491" class="javax.swing.JTextField" binding="inputBuscarSerial">
         <constraints>
           <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Modelo"/>
+          <text value="Serial"/>
         </properties>
       </component>
       <component id="6f465" class="javax.swing.JLabel" binding="tituloBuscarDeportivo">
@@ -215,7 +195,30 @@
           <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Buscar automovil"/>
+          <text value="Buscar deportivo"/>
+        </properties>
+      </component>
+      <component id="aeed9" class="javax.swing.JComboBox" binding="inputAddCilindraje">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Cilindraje"/>
+            <item value="Alto"/>
+            <item value="Medio"/>
+            <item value="Bajo"/>
+          </model>
+        </properties>
+      </component>
+      <component id="91eff" class="javax.swing.JButton" binding="botonEstado">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Estado y Disponibilidad"/>
         </properties>
       </component>
     </children>

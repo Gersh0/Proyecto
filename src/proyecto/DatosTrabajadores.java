@@ -22,8 +22,8 @@ public class DatosTrabajadores extends JFrame {
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        Almacen.focus(inputCcEmpleado,"Cédula");
-        Almacen.focus(inputCcProveedor,"NIT");
+        Almacen.focus(inputCcEmpleado, "Cédula");
+        Almacen.focus(inputCcProveedor, "NIT");
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -40,14 +40,14 @@ public class DatosTrabajadores extends JFrame {
         });
         buscarEmpleado.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) throws ArrayIndexOutOfBoundsException{
-                try{
+            public void actionPerformed(ActionEvent e) throws ArrayIndexOutOfBoundsException {
+                try {
                     JOptionPane.showMessageDialog(null,
-                            "Nombre: "+ Almacen.getEmpleados()[Almacen.buscarEmpleado(inputCcEmpleado.getText())].getNombre()+
+                            "Nombre: " + Almacen.getEmpleados()[Almacen.buscarEmpleado(inputCcEmpleado.getText())].getNombre() +
                                     "\nCargo: ¿Lo ponemos?",
                             "Empleado(a)", JOptionPane.INFORMATION_MESSAGE);
                     inputCcEmpleado.setText("Cédula");
-                }catch(ArrayIndexOutOfBoundsException a){
+                } catch (ArrayIndexOutOfBoundsException a) {
                     System.out.println(a);
                     JOptionPane.showMessageDialog(null,
                             "La cédula ingresada no coincide con ningún empleado registrado.",
@@ -58,8 +58,20 @@ public class DatosTrabajadores extends JFrame {
         buscarProveedor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Método aún no implemnentado.",
-                        "Proveedor", JOptionPane.INFORMATION_MESSAGE);
+                try {
+                    Proveedor provTemp = Almacen.getProveedores()[Almacen.buscarProveedor(inputCcProveedor.getText())];
+                    JOptionPane.showMessageDialog(null,
+                            "Nombre: " + provTemp.getNombre() +
+                                    "\nTeléfono: " + provTemp.getTel(),
+                            "Proveedor", JOptionPane.INFORMATION_MESSAGE);
+                    inputCcEmpleado.setText("NIT");
+                } catch (ArrayIndexOutOfBoundsException a) {
+                    System.out.println(a);
+                    inputCcProveedor.setText("NIT");
+                    JOptionPane.showMessageDialog(null,
+                            "La cédula ingresada no coincide con ningún empleado registrado.",
+                            "Empleado(a)", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }
