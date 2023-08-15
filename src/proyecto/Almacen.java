@@ -138,6 +138,7 @@ public abstract class Almacen {
 
     public static void addVenta(Vendedor vendedor, Cliente cliente, Carro carro, LocalDate fecha, MP formaDePago) {
         cliente.registrarCompra(new Venta(vendedor, cliente, carro, fecha, formaDePago));
+        delCarro(carro.getMarca(),carro.getModelo());
     }
 
 
@@ -231,7 +232,7 @@ public abstract class Almacen {
 
     public static void delCarro(String marca, String modelo) {
         int i = 0;
-        while (!marca.equals(carros[i].getMarca()) && !modelo.equals(carros[i].getModelo())) {
+        while (i<carros.length && !marca.equals(carros[i].getMarca()) && !modelo.equals(carros[i].getModelo())) {
             i++;
         }
 

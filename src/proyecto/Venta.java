@@ -85,7 +85,13 @@ public class Venta {
     public double calcularVenta() throws Eventas {
 
         double precio = carro.getPrecio();
-        Almacen.buscarEmpleado(cliente.getCedula());
+        int x=Almacen.buscarEmpleado(cliente.getCedula());
+
+        if (x!=-1){
+            precio*=0.9;
+        }
+
+
         //todo para que el descuento
         if (cliente.getVentasC().length != 0) {
             precio *= 0.93;

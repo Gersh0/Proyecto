@@ -64,11 +64,25 @@ public class Ventas extends JFrame {
                         Carro carro=Almacen.getCarros()[carroPos];
                         String formaPago=inputAddFormaDePAgo.getSelectedItem().toString();
                         //To Do organizar el tipo de Pago
-                        Almacen.addVenta(v1,c1,carro, LocalDate.now(),MP.CREDITO);
+
+                        switch (formaPago){
+                            case "Crédito":
+                                Almacen.addVenta(v1,c1,carro, LocalDate.now(),MP.CREDITO);
+                                break;
+                            case "Débito":
+                                Almacen.addVenta(v1,c1,carro, LocalDate.now(),MP.DEBITO);
+                                break;
+                            case "Efectivo":
+                                Almacen.addVenta(v1,c1,carro,LocalDate.now(),MP.EFECTIVO);
+                                break;
+
+
+                        }
+
                             //Almacen.addVenta(inputNombreEmpleado.getText(), inputCcEmpleado.getText(),
                             //   inputTelefonoEmpleado.getText(), 0);//
-                            JOptionPane.showMessageDialog(null, "Empleado añadido",
-                                    "Añadir empleado", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Venta añadida",
+                                    "Añadir venta", JOptionPane.INFORMATION_MESSAGE);
                         }
 
                         //JOptionPane.showMessageDialog(null, Almacen.getCarros().length);
