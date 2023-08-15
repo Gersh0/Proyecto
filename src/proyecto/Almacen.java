@@ -294,6 +294,8 @@ public abstract class Almacen {
     }
 
 
+
+
 /*
     public static void main(String[] args) {
         Automovil carro = new Automovil("Samsung", "GalaxyS11", "3312123", Cilindraje.ALTO, true, true);

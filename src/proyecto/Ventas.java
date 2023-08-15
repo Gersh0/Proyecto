@@ -110,5 +110,7 @@ public class Ventas extends JFrame {
 
 
         });
+
+
     }
 }
