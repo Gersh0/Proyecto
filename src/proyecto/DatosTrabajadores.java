@@ -64,7 +64,7 @@ public class DatosTrabajadores extends JFrame {
                             "Nombre: " + provTemp.getNombre() +
                                     "\nTeléfono: " + provTemp.getTel(),
                             "Proveedor", JOptionPane.INFORMATION_MESSAGE);
-                    inputCcEmpleado.setText("NIT");
+                    inputCcProveedor.setText("NIT");
                 } catch (ArrayIndexOutOfBoundsException a) {
                     System.out.println(a);
                     inputCcProveedor.setText("NIT");
