@@ -85,8 +85,10 @@ public class Ventas extends JFrame {
 
 
                         }
+                        int y=Almacen.getClientes()[posicionCliente].getVentasC().length-1;
+                        Venta v= Almacen.getClientes()[posicionCliente].getVentasC()[y];
 
-                            JOptionPane.showMessageDialog(null, "Venta añadida",
+                            JOptionPane.showMessageDialog(null, "Venta añadida"+v.getCodigo()+" "+v.calcularVenta(),
                                     "Añadir venta", JOptionPane.INFORMATION_MESSAGE);
 
 

@@ -25,21 +25,20 @@ public class Venta {
     private final Carro carro;
     private LocalDate fecha;
 
-    private static int code;
+    private static int code=0;
 
-    private String codeVenta;
+
     private MP metodoP = MP.CREDITO;
 
     //InstanceOf(Empleado.class) o InstanceOf(Cliente.class) //ver cómo poner con personas
     public Venta(Vendedor vendedor, Cliente cliente, Carro carro, LocalDate fecha, MP metodoP) {
         super();
-        code=0;
         this.vendedor = vendedor;
         this.cliente = cliente;
         this.carro = carro;
         this.fecha = fecha;
         this.metodoP = metodoP;
-        this.codeVenta="V"+code;
+        this.codigo="V"+code;
         code++;
     }
 //hola
@@ -89,7 +88,7 @@ public class Venta {
     }
 
 
-    public double calcularVenta() throws Eventas {
+    public double calcularVenta(){
 
         double precio = carro.getPrecio();
         int x=Almacen.buscarEmpleado(cliente.getCedula());
@@ -112,10 +111,6 @@ public class Venta {
             precio *= 0.92;
         } else if (carro instanceof Deportivo) {
             precio *= 0.97;
-
-        } else {
-
-            throw new Eventas("No hay carro registrado");
 
         }
 
