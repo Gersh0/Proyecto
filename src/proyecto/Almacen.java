@@ -1,12 +1,17 @@
 package proyecto;
 
+import javax.swing.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.time.LocalDate;
 import java.util.Arrays;
 
 class EAlmacen extends Exception {
+
     public EAlmacen(String a) {
         super(a);
     }
+
 }
 
 public abstract class Almacen {
@@ -136,11 +141,12 @@ public abstract class Almacen {
 
     public static void addVenta(Vendedor vendedor, Cliente cliente, Carro carro, LocalDate fecha, MP formaDePago) {
         cliente.registrarCompra(new Venta(vendedor, cliente, carro, fecha, formaDePago));
+        delCarro(carro.getMarca(), carro.getModelo());
     }
+
 
     public static int buscarProveedor(String nit) {//ver cómo poner con personas
         int i = 0;
-
         if (proveedores == null) {//Si es null envía -1 para indicar que no existe
             return -1;
         } else {
@@ -158,45 +164,42 @@ public abstract class Almacen {
         int i = 0;
         if (clientes == null) {//Si es null envía -1 para indicar que no existe
             return -1;
-        } else {
-            while (i < clientes.length && !cedula.equals(clientes[i].getCedula())) {
-                i++;
-            }
-            if (i >= clientes.length) {
-                return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
-            }
-            return i;
         }
+        while (i < clientes.length && !cedula.equals(clientes[i].getCedula())) {
+            i++;
+        }
+        if (i >= clientes.length) {
+            return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
+        }
+        return i;
     }
 
     public static int buscarEmpleado(String cedula) throws ArrayIndexOutOfBoundsException {
         int i = 0;
         if (empleados == null) {//Si es null envía -1 para indicar que no existe
             return -1;
-        } else {
-            while (i < empleados.length && !cedula.equals(empleados[i].getCedula())) {
-                i++;
-            }
-            if (i >= empleados.length) {
-                return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
-            }
-            return i;
         }
+        while (i < empleados.length && !cedula.equals(empleados[i].getCedula())) {
+            i++;
+        }
+        if (i >= empleados.length) {
+            return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
+        }
+        return i;
     }
 
     public static int buscarCarro(String marca, String serial) { //Buscar por marca y modelo y que muestre las cilindradas;
         int i = 0;
         if (carros == null) {//Si es null envía -1 para indicar que no existe
             return -1;
-        } else {//Sino procede con búsqueda:  para detener el ciclo el index(i) debe ser mayor que el length del arreglo y, a su vez, los dos datos ingresados deben coincidir con algún carro del arreglo.
-            while ((i < carros.length) && !(serial.equals(carros[i].getSerial()) && marca.equalsIgnoreCase(carros[i].getMarca()))) {
-                i++;
-            }
-            if (i >= carros.length) {
-                return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
-            }
-            return i;
         }
+        while ((i < carros.length) && !(serial.equals(carros[i].getSerial()) && marca.equalsIgnoreCase(carros[i].getMarca()))) {
+            i++;
+        }
+        if (i >= carros.length) {
+            return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
+        }
+        return i;
     }
 
     public static void delCliente(String cedula) {//ver cómo poner con personas
@@ -231,7 +234,7 @@ public abstract class Almacen {
 
     public static void delCarro(String marca, String modelo) {
         int i = 0;
-        while (!marca.equals(carros[i].getMarca()) && !modelo.equals(carros[i].getModelo())) {
+        while (i<carros.length && !marca.equals(carros[i].getMarca()) && !modelo.equals(carros[i].getModelo())) {
             i++;
         }
 

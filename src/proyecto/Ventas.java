@@ -1,13 +1,15 @@
 package proyecto;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Ventas extends JFrame {
     private JPanel Ventas;
     private JLabel tituloNuevaVenta;
     private JTextField inputAddCliente;
+    ;
     private JTextField inputAddVendedor;
     private JTextField inputAddCarroMarca;
     private JComboBox inputAddFormaDePAgo;
@@ -37,40 +39,75 @@ public class Ventas extends JFrame {
             new Interfaz();
             dispose();
         });
+        botonCrearVenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)  {
 
-        botonCrearVenta.addActionListener(e -> {
-            try {
-                System.out.println(inputAddCliente.getText());
+                    System.out.println(inputAddCliente.getText());
 
-                if (inputAddCliente.getText().equals("Cedula Cliente") ||
-                        inputAddVendedor.getText().equals("Cedula Vendedor") ||
-                        inputAddCarroModelo.getText().equals("Modelo") ||
-                        inputAddCarroMarca.getText().equals("Marca")
-                ) {
-                    JOptionPane.showMessageDialog(null, "Campos vacios",
-                            "Añadir empleado", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    int posicionCliente = Almacen.buscarCliente(inputAddCliente.getText());
-                    int posicionEmpleado = Almacen.buscarEmpleado(inputAddVendedor.getText());
-                    int carroPos = Almacen.buscarCarro(inputAddCarroMarca.getText(), inputAddCarroModelo.getText());
-                    Cliente c1 = Almacen.getClientes()[posicionCliente];
-                    Vendedor v1 = (Vendedor) Almacen.getEmpleados()[posicionEmpleado];
-                    Carro carro = Almacen.getCarros()[carroPos];
-                    String formaPago = Objects.requireNonNull(inputAddFormaDePAgo.getSelectedItem()).toString();
-                    //To Do organizar el tipo de Pago
-                    Almacen.addVenta(v1, c1, carro, LocalDate.now(), MP.CREDITO);
-                    //Almacen.addVenta(inputNombreEmpleado.getText(), inputCcEmpleado.getText(),
-                    //   inputTelefonoEmpleado.getText(), 0);//
-                    JOptionPane.showMessageDialog(null, "Empleado añadido",
-                            "Añadir empleado", JOptionPane.INFORMATION_MESSAGE);
+                    if(inputAddCliente.getText().equals("Cedula Cliente") ||
+                            inputAddVendedor.getText().equals("Cedula Vendedor")||
+                            inputAddCarroModelo.getText().equals("Modelo")||
+                            inputAddCarroMarca.getText().equals("Marca")
+                    ){
+                        JOptionPane.showMessageDialog(null, "Campos vacios",
+                                "Añadir empleado", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else{
+
+
+                        int posicionCliente=Almacen.buscarCliente(inputAddCliente.getText());
+                        int posicionEmpleado=Almacen.buscarEmpleado(inputAddVendedor.getText());
+                        int carroPos=Almacen.buscarCarro(inputAddCarroMarca.getText(),inputAddCarroModelo.getText());
+                        if (carroPos==-1||posicionCliente==-1||posicionEmpleado==-1){
+                            JOptionPane.showMessageDialog(null, "Faltan datos",
+                                    "Añadir usuario", JOptionPane.ERROR_MESSAGE);
+                        }else{
+                            Cliente c1=Almacen.getClientes()[posicionCliente];
+                            Vendedor v1=(Vendedor)Almacen.getEmpleados()[posicionEmpleado];
+                            Carro carro=Almacen.getCarros()[carroPos];
+                            String formaPago=inputAddFormaDePAgo.getSelectedItem().toString();
+
+
+                            switch (formaPago){
+                                case "Crédito":
+                                    Almacen.addVenta(v1,c1,carro, LocalDate.now(),MP.CREDITO);
+                                    break;
+                                case "Transferencia Bancaria":
+                                    Almacen.addVenta(v1,c1,carro, LocalDate.now(),MP.DEBITO);
+                                    break;
+                                case "Efectivo":
+                                    Almacen.addVenta(v1,c1,carro,LocalDate.now(),MP.EFECTIVO);
+                                    break;
+
+
+
+                        }
+                        int y=Almacen.getClientes()[posicionCliente].getVentasC().length-1;
+                        Venta v= Almacen.getClientes()[posicionCliente].getVentasC()[y];
+
+                            try {//Puse estp porque tira Unhandled Exception- Att, German.
+                                JOptionPane.showMessageDialog(null, "Venta añadida"+v.getCodigo()+" "+v.calcularVenta(),
+                                        "Añadir venta", JOptionPane.INFORMATION_MESSAGE);
+                            } catch (Eventas ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+
+                        }
+
+                            //Almacen.addVenta(inputNombreEmpleado.getText(), inputCcEmpleado.getText(),
+                            //   inputTelefonoEmpleado.getText(), 0);//
+
+                        }
+
+                        //JOptionPane.showMessageDialog(null, Almacen.getCarros().length);
+
                 }
 
-                //JOptionPane.showMessageDialog(null, Almacen.getCarros().length);
 
-            } catch (ArrayIndexOutOfBoundsException e1) {
-                JOptionPane.showMessageDialog(null, "Datos erróneos",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-            }
+
+
 
 
         });
