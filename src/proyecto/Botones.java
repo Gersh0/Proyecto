@@ -16,7 +16,8 @@ public abstract class Botones {//¿Puede ser interfaz?
                     JOptionPane.showMessageDialog(null,
                             "Marca: " + Almacen.getCarros()[index].getMarca() +
                                     "\nModelo: " + Almacen.getCarros()[index].getModelo() +
-                                    "\nPrecio: $" + Almacen.getCarros()[index].getPrecio(),
+                                    "\nPrecio: $" + Almacen.getCarros()[index].getPrecio()+
+                            "\nTipo: "+tipoCarro,
                             tipoCarro, JOptionPane.INFORMATION_MESSAGE);
                     inputBuscarMarca.setText("Marca");
                     inputBuscarSerial.setText("Serial");
