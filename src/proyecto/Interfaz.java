@@ -1,12 +1,9 @@
 package proyecto;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
-import java.util.Date;
 
 public class Interfaz extends JFrame {
     private JPanel Principal;
@@ -33,10 +30,10 @@ public class Interfaz extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (Almacen.getEmpleados() == null) {
-                    JOptionPane.showMessageDialog(null,"Aún no existen empleados registrados. Redirigiendo al formulario de ingreso de personal.");
+                    JOptionPane.showMessageDialog(null, "Aún no existen empleados registrados. Redirigiendo al formulario de ingreso de personal.");
                     new AdicionarTrabajadores();
                     dispose();
-                }else{
+                } else {
                     new DatosTrabajadores();
                     dispose();
                 }
@@ -90,12 +87,12 @@ public class Interfaz extends JFrame {
         Almacen.addCliente("Johnny","55","1231213");
         Almacen.addCliente("Johnny","66","1231213");
         Almacen.addCarro("Volvo", "2023", "0", Cilindraje.MEDIO, true, true, "Deportivo");
-        Almacen.addCarro("Suzuki","2023","1",Cilindraje.MEDIO,true,true, "Automovil");
-        Almacen.addCarro("BMW","2023","2",Cilindraje.ALTO,true,true, "Deportivo");
-        Almacen.addCarro("BMW","2023","3",Cilindraje.ALTO,true,true, "Automovil");
-        Almacen.addCarro("BMW","2023","4",Cilindraje.BAJO,true,true, "Campero");
-        Almacen.addCarro("Volvo","2023","5",Cilindraje.MEDIO,true,true, "Campero");
-        Almacen.addCarro("BMW","2023","6",Cilindraje.BAJO,true,true, "Automovil");
+        Almacen.addCarro("Suzuki", "2023", "1", Cilindraje.MEDIO, true, true, "Automovil");
+        Almacen.addCarro("BMW", "2023", "2", Cilindraje.ALTO, true, true, "Deportivo");
+        Almacen.addCarro("BMW", "2023", "3", Cilindraje.ALTO, true, true, "Automovil");
+        Almacen.addCarro("BMW", "2023", "4", Cilindraje.BAJO, true, true, "Campero");
+        Almacen.addCarro("Volvo", "2023", "5", Cilindraje.MEDIO, true, true, "Campero");
+        Almacen.addCarro("BMW", "2023", "6", Cilindraje.BAJO, true, true, "Automovil");
         new Interfaz();
     }
 
