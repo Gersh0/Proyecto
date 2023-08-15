@@ -61,7 +61,7 @@ public class Interfaz extends JFrame {
 
     public static void main(String[] args) {
         Almacen.addCliente("Maria","123","123");
-        Almacen.addCarro("Re","32","C09H",Cilindraje.ALTO,true,true);
+        Almacen.addCarro("Re","32","C09H1",Cilindraje.ALTO,true,true, "Campero");
         Almacen.addEmpleado("Juan","378","83",389,true);
         Vendedor v1=new Vendedor("Juan","3432","334",1400);
         Empleado em=Almacen.getEmpleados()[0];
@@ -70,7 +70,7 @@ public class Interfaz extends JFrame {
         LocalDate de=LocalDate.now();
         Almacen.addVenta(v1,e1,c1,de,MP.CREDITO);
         Almacen.addCliente("Germán","1234","1234");
-        Almacen.addCarro("Ren","32","C0F9H",Cilindraje.ALTO,true,true);
+        Almacen.addCarro("Ren","32","C0F9H",Cilindraje.ALTO,true,true, "Automovil");
         Almacen.addEmpleado("Juan","378","83",389,true);
         e1=Almacen.getClientes()[1];
         //c1=Almacen.getCarros()[1];

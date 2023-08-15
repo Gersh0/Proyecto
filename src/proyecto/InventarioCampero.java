@@ -49,7 +49,7 @@ public class InventarioCampero extends JFrame {
         Almacen.focus(inputEditarModelo, "Modelo");
         Almacen.focus(inputEditarPrecio, "Precio");
         Almacen.focus(inputEditarSerial, "Serial");
-        String tipoCarro = "Automovil";
+        String tipoCarro = "Campero";
         Botones.enviarBuscar(botonBuscar, inputBuscarMarca, inputBuscarSerial, tipoCarro);
         Botones.enviarCrear(botonCrear, inputAddCilindraje, inputAddMarca, inputAddSerial, inputAddModelo, tipoCarro);
         Botones.enviarBorrar(botonBorrar, inputBorrarMarca, inputBorrarSerial, tipoCarro);

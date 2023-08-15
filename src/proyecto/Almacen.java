@@ -84,17 +84,6 @@ public abstract class Almacen {
         }
     }
 
-    public static void addCarro(String marca, String modelo, String serial, Cilindraje tipo, boolean disponible, boolean estado) {//Ver cómo involucrar al proveedor
-        if (carros == null) {
-            carros = new Carro[1];
-            carros[0] = new Carro(marca, modelo, serial, tipo, estado, disponible);
-        } else {
-            Carro carro = new Carro(marca, modelo, serial, tipo, disponible, estado);
-            carros = Arrays.copyOf(carros, carros.length + 1);
-            carros[carros.length - 1] = carro;
-        }
-    }
-
     public static void addProveedor(String nombre, String nit, String tel, String tipoCarro) {
         if (proveedores == null) {
             proveedores = new Proveedor[1];
@@ -235,9 +224,9 @@ public abstract class Almacen {
         proveedores = Arrays.copyOf(proveedores, proveedores.length - 1);
     }
 
-    public static void delCarro(String marca, String modelo) {
+    public static void delCarro(String marca, String serial) {
         int i = 0;
-        while (i < carros.length && !marca.equals(carros[i].getMarca()) && !modelo.equals(carros[i].getModelo())) {
+        while (i < carros.length && !marca.equals(carros[i].getMarca()) && !serial.equals(carros[i].getModelo())) {
             i++;
         }
 
