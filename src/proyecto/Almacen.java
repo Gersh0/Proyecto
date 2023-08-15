@@ -62,6 +62,7 @@ public abstract class Almacen {
         } else {
             clientes = Arrays.copyOf(clientes, clientes.length + 1);
             clientes[clientes.length - 1] = new Cliente(nombre, cedula, tel);
+            System.out.println(clientes[clientes.length - 1]);
         }
     }
 
@@ -160,17 +161,16 @@ public abstract class Almacen {
         }
     }
 
-    public static int buscarCliente(String cedula) throws EAlmacen {//ver cómo poner con personas
+    public static int buscarCliente(String cedula)  {//ver cómo poner con personas
         int i = 0;
         if (clientes == null) {
-            throw new EAlmacen("No existe el cliente");
+            return -1;
+
         }
         while (i < clientes.length && !cedula.equals(clientes[i].getCedula())) {
             i++;
-            if (i == clientes.length) {
-                throw new EAlmacen("No existe el cliente");
-
-            }
+        }if (i >= clientes.length) {
+            return -1;
         }
         return i;
     }
@@ -195,7 +195,7 @@ public abstract class Almacen {
         if (carros == null) {//Si es null envía -1 para indicar que no existe
             return -1;
         } else {
-            while ((i < carros.length) && !(serial.equals(carros[i].getSerial()) && marca.equalsIgnoreCase(carros[i].getMarca()))) {
+            while ((i < carros.length) && !(serial.equals(carros[i].getModelo()) && marca.equalsIgnoreCase(carros[i].getMarca()))) {
                 i++;
             }
             if (i >= carros.length) {

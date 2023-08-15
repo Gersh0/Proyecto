@@ -73,7 +73,7 @@ public class Interfaz extends JFrame {
         Almacen.addCarro("Ren","32","C0F9H",Cilindraje.ALTO,true,true);
         Almacen.addEmpleado("Juan","378","83",389,true);
         e1=Almacen.getClientes()[1];
-        c1=Almacen.getCarros()[1];
+        //c1=Almacen.getCarros()[1];
         Almacen.addVenta(v1,e1,c1,de,MP.EFECTIVO);
         Almacen.addEmpleado("Andres","1","3333333", 5000000,false);
         Almacen.addEmpleado("Julio","2","444444444", 2000000,true);

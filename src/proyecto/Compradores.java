@@ -55,12 +55,23 @@ public class Compradores extends JFrame {
                     }
                     //Si ya existe devuelve la posición, si no existe devuelve -1 y lo crea
                     else {
-                        /*Almacen.buscarCliente(cc);
-                        JOptionPane.showMessageDialog(null, "Este cliente ya existe",
-                                "Añadir usuario", JOptionPane.ERROR_MESSAGE);*/
-                        Almacen.addCliente(nombre, tel, cc);
-                        JOptionPane.showMessageDialog(null, "Se añadió el usuario",
-                                "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
+                        if (Almacen.buscarCliente(cc)==-1){
+
+                            Almacen.addCliente(nombre, cc, tel);
+                            JOptionPane.showMessageDialog(null, "Se añadió el usuario",
+                                    "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
+
+
+                    }else{
+                            JOptionPane.showMessageDialog(null, "Este usuario ya ha sido " +
+                                            "registrado",
+                                    "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+                    }
+
+
                     }
 
 
@@ -77,7 +88,7 @@ public class Compradores extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 String cc = inputCcBuscar.getText();
-                try {
+
 
                     if (cc.equals("Cédula")
                     ) {
@@ -86,17 +97,24 @@ public class Compradores extends JFrame {
                     }
                     //Si ya existe devuelve la posición, si no existe devuelve -1 y lo crea
                     else {
-                        Cliente a = Almacen.getClientes()[Almacen.buscarCliente(cc)];
 
-                        JOptionPane.showMessageDialog(null, "Nombre: " + a.getNombre() + " \nCompras realizadas: " + a.getCantVentas(),
-                                "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
+                        if (Almacen.buscarCliente(cc)==-1){
+                            JOptionPane.showMessageDialog(null, "Usuario no registrado",
+                                    "Añadir usuario", JOptionPane.ERROR_MESSAGE);
+
+                        }else{
+
+                            Cliente a = Almacen.getClientes()[Almacen.buscarCliente(cc)];
+
+                            JOptionPane.showMessageDialog(null, "Nombre: " + a.getNombre() + " \nCompras realizadas: " + a.getCantVentas(),
+                                    "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
+
+                        }
+
                     }
 
 
-                } catch (EAlmacen e3) {
-                    JOptionPane.showMessageDialog(null, "La cédula no está registrada",
-                            "Añadir usuario", JOptionPane.INFORMATION_MESSAGE);
-                }
+
                 inputCcBuscar.setText("Cédula");
 
             }
@@ -106,7 +124,7 @@ public class Compradores extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 String cc = inputBorrarCc.getText();
-                try {
+
 
                     if (cc.equals("Cédula")
                     ) {
@@ -115,19 +133,27 @@ public class Compradores extends JFrame {
                     }
                     //Si ya existe devuelve la posición, si no existe devuelve -1 y lo crea
                     else {
-                        Cliente a = Almacen.getClientes()[Almacen.buscarCliente(cc)];
-                        Almacen.delCliente(cc);
-                        JOptionPane.showMessageDialog(null, "El cliente hasido borrado",
-                                "Editar usuario", JOptionPane.INFORMATION_MESSAGE);
+                        if (Almacen.buscarCliente(cc)==-1){
+                            JOptionPane.showMessageDialog(null, "Usuario no registrado",
+                                    "Añadir usuario", JOptionPane.ERROR_MESSAGE);
+
+                        }else{
+
+                            Cliente a = Almacen.getClientes()[Almacen.buscarCliente(cc)];
+                            Almacen.delCliente(cc);
+                            JOptionPane.showMessageDialog(null, "El cliente hasido borrado",
+                                    "Editar usuario", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+                        }
+
                     }
 
-                } catch (EAlmacen e3) {
-                    JOptionPane.showMessageDialog(null, "La cédula no está registrada",
-                            "Editar usuario", JOptionPane.INFORMATION_MESSAGE);
                 }
 
 
-            }
+
         });
     }
 }

@@ -24,16 +24,23 @@ public class Venta {
     private final Cliente cliente;
     private final Carro carro;
     private LocalDate fecha;
+
+    private static int code;
+
+    private String codeVenta;
     private MP metodoP = MP.CREDITO;
 
     //InstanceOf(Empleado.class) o InstanceOf(Cliente.class) //ver cómo poner con personas
     public Venta(Vendedor vendedor, Cliente cliente, Carro carro, LocalDate fecha, MP metodoP) {
         super();
+        code=0;
         this.vendedor = vendedor;
         this.cliente = cliente;
         this.carro = carro;
         this.fecha = fecha;
         this.metodoP = metodoP;
+        this.codeVenta="V"+code;
+        code++;
     }
 //hola
 

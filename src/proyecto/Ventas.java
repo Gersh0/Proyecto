@@ -44,9 +44,9 @@ public class Ventas extends JFrame {
         botonCrearVenta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)  {
-                try {
+
                     System.out.println(inputAddCliente.getText());
-                    
+
                     if(inputAddCliente.getText().equals("Cedula Cliente") ||
                             inputAddVendedor.getText().equals("Cedula Vendedor")||
                             inputAddCarroModelo.getText().equals("Modelo")||
@@ -56,47 +56,57 @@ public class Ventas extends JFrame {
                                 "Añadir empleado", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else{
+
+
                         int posicionCliente=Almacen.buscarCliente(inputAddCliente.getText());
                         int posicionEmpleado=Almacen.buscarEmpleado(inputAddVendedor.getText());
                         int carroPos=Almacen.buscarCarro(inputAddCarroMarca.getText(),inputAddCarroModelo.getText());
-                        Cliente c1=Almacen.getClientes()[posicionCliente];
-                        Vendedor v1=(Vendedor)Almacen.getEmpleados()[posicionEmpleado];
-                        Carro carro=Almacen.getCarros()[carroPos];
-                        String formaPago=inputAddFormaDePAgo.getSelectedItem().toString();
-                        //To Do organizar el tipo de Pago
+                        if (carroPos==-1||posicionCliente==-1||posicionEmpleado==-1){
+                            JOptionPane.showMessageDialog(null, "Faltan datos",
+                                    "Añadir usuario", JOptionPane.ERROR_MESSAGE);
+                        }else{
+                            Cliente c1=Almacen.getClientes()[posicionCliente];
+                            Vendedor v1=(Vendedor)Almacen.getEmpleados()[posicionEmpleado];
+                            Carro carro=Almacen.getCarros()[carroPos];
+                            String formaPago=inputAddFormaDePAgo.getSelectedItem().toString();
 
-                        switch (formaPago){
-                            case "Crédito":
-                                Almacen.addVenta(v1,c1,carro, LocalDate.now(),MP.CREDITO);
-                                break;
-                            case "Débito":
-                                Almacen.addVenta(v1,c1,carro, LocalDate.now(),MP.DEBITO);
-                                break;
-                            case "Efectivo":
-                                Almacen.addVenta(v1,c1,carro,LocalDate.now(),MP.EFECTIVO);
-                                break;
+
+                            switch (formaPago){
+                                case "Crédito":
+                                    Almacen.addVenta(v1,c1,carro, LocalDate.now(),MP.CREDITO);
+                                    break;
+                                case "Transferencia Bancaria":
+                                    Almacen.addVenta(v1,c1,carro, LocalDate.now(),MP.DEBITO);
+                                    break;
+                                case "Efectivo":
+                                    Almacen.addVenta(v1,c1,carro,LocalDate.now(),MP.EFECTIVO);
+                                    break;
+
+
+
+                        }
+
+                            JOptionPane.showMessageDialog(null, "Venta añadida",
+                                    "Añadir venta", JOptionPane.INFORMATION_MESSAGE);
+
 
 
                         }
 
                             //Almacen.addVenta(inputNombreEmpleado.getText(), inputCcEmpleado.getText(),
                             //   inputTelefonoEmpleado.getText(), 0);//
-                            JOptionPane.showMessageDialog(null, "Venta añadida",
-                                    "Añadir venta", JOptionPane.INFORMATION_MESSAGE);
+
                         }
 
                         //JOptionPane.showMessageDialog(null, Almacen.getCarros().length);
 
                 }
-                catch (EAlmacen e1){
-                    JOptionPane.showMessageDialog(null, "Datos erróneos",
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                }
 
 
 
 
-            }
+
+
         });
     }
 }
