@@ -21,7 +21,7 @@ public abstract class Botones {//¿Puede ser interfaz?
                     inputBuscarMarca.setText("Marca");
                     inputBuscarSerial.setText("Serial");
                 } catch (ArrayIndexOutOfBoundsException a) {
-                    inputBuscarSerial.setText("Marca");
+                    inputBuscarMarca.setText("Marca");
                     inputBuscarSerial.setText("Serial");
                     System.out.println(a);
                     JOptionPane.showMessageDialog(null,
