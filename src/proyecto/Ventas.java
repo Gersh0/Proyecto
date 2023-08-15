@@ -16,7 +16,7 @@ public class Ventas extends JFrame {
     private JLabel tituloVentas;
     private JLabel tituloCarro;
     private JLabel tituloFormaDePago;
-    private JTextField inputAddCarroModelo;
+    private JTextField inputAddCarroSerial;
     private JButton botonCrearVenta;
     private JButton atrasButton;
 
@@ -28,7 +28,7 @@ public class Ventas extends JFrame {
         setVisible(true);
         Almacen.focus(inputAddCliente, "Cedula Cliente");
         Almacen.focus(inputAddVendedor, "Cedula Vendedor");
-        Almacen.focus(inputAddCarroModelo, "Modelo");
+        Almacen.focus(inputAddCarroSerial, "Modelo");
         Almacen.focus(inputAddCarroMarca, "Marca");
         atrasButton.addActionListener(new ActionListener() {
             @Override
@@ -45,7 +45,7 @@ public class Ventas extends JFrame {
 
                 if (inputAddCliente.getText().equals("Cedula Cliente") ||
                         inputAddVendedor.getText().equals("Cedula Vendedor") ||
-                        inputAddCarroModelo.getText().equals("Modelo") ||
+                        inputAddCarroSerial.getText().equals("Modelo") ||
                         inputAddCarroMarca.getText().equals("Marca")
                 ) {
                     JOptionPane.showMessageDialog(null, "Campos vacios",
@@ -55,13 +55,13 @@ public class Ventas extends JFrame {
 
                     int posicionCliente = Almacen.buscarCliente(inputAddCliente.getText());
                     int posicionEmpleado = Almacen.buscarEmpleado(inputAddVendedor.getText());
-                    int carroPos = Almacen.buscarCarro(inputAddCarroMarca.getText(), inputAddCarroModelo.getText());
-                    if (carroPos == -1 || posicionCliente == -1 || posicionEmpleado == -1 || Almacen.getCarros()[carroPos].getPlaca().equalsIgnoreCase("")) {
+                    int carroPos = Almacen.buscarCarro(inputAddCarroMarca.getText(), inputAddCarroSerial.getText());
+                    if (carroPos == -1 || posicionCliente == -1 || posicionEmpleado == -1 || Almacen.getCarros()[carroPos].getPlaca().length()==6) {
                         JOptionPane.showMessageDialog(null, "Faltan datos o el vehículo no está disponible",
                                 "Añadir usuario", JOptionPane.ERROR_MESSAGE);
                         inputAddCliente.setText("Cedula Cliente");
                         inputAddVendedor.setText("Cedula Vendedor");
-                        inputAddCarroModelo.setText("Modelo");
+                        inputAddCarroSerial.setText("Modelo");
                         inputAddCarroMarca.setText("Marca");
                     } else {
                         try {
@@ -91,7 +91,7 @@ public class Ventas extends JFrame {
                                     "Añadir venta", JOptionPane.INFORMATION_MESSAGE);
                             inputAddCliente.setText("Cedula Cliente");
                             inputAddVendedor.setText("Cedula Vendedor");
-                            inputAddCarroModelo.setText("Modelo");
+                            inputAddCarroSerial.setText("Modelo");
                             inputAddCarroMarca.setText("Marca");
                         } catch (ClassCastException c) {
                             JOptionPane.showMessageDialog(null,
