@@ -1,5 +1,7 @@
 package proyecto;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Carro {
 
     protected static int cant = 0;//Qué vamos a usar aquí?
@@ -60,8 +62,15 @@ public class Carro {
         this.disponible = disponible;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setPlaca() {
+        String banco = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        this.placa="";
+        // La cadena en donde iremos agregando un carácter aleatorio
+        for (int x = 0; x < 6; x++) {
+            int indiceAleatorio = ThreadLocalRandom.current().nextInt(0, banco.length() - 1);
+            char caracterAleatorio = banco.charAt(indiceAleatorio);
+            this.placa += caracterAleatorio;
+        }
     }
 
     public void setModelo(String modelo) {

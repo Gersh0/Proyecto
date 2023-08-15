@@ -42,9 +42,11 @@ public class DatosTrabajadores extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) throws ArrayIndexOutOfBoundsException {
                 try {
+                    Empleado a = Almacen.getEmpleados()[Almacen.buscarEmpleado(inputCcEmpleado.getText())];
                     JOptionPane.showMessageDialog(null,
-                            "Nombre: " + Almacen.getEmpleados()[Almacen.buscarEmpleado(inputCcEmpleado.getText())].getNombre() +
-                                    "\nCargo: ¿Lo ponemos?",
+                            "Nombre: " + a.getNombre() +
+                                    "\nTeléfono" + a.getTel() +
+                                    "\nSalario: $" + a.getSalario(),
                             "Empleado(a)", JOptionPane.INFORMATION_MESSAGE);
                     inputCcEmpleado.setText("Cédula");
                 } catch (ArrayIndexOutOfBoundsException a) {
@@ -62,7 +64,8 @@ public class DatosTrabajadores extends JFrame {
                     Proveedor provTemp = Almacen.getProveedores()[Almacen.buscarProveedor(inputCcProveedor.getText())];
                     JOptionPane.showMessageDialog(null,
                             "Nombre: " + provTemp.getNombre() +
-                                    "\nTeléfono: " + provTemp.getTel(),
+                                    "\nTeléfono: " + provTemp.getTel() +
+                                    "\nTipo de carros: " + provTemp.getTipoCarros(),
                             "Proveedor", JOptionPane.INFORMATION_MESSAGE);
                     inputCcProveedor.setText("NIT");
                 } catch (ArrayIndexOutOfBoundsException a) {

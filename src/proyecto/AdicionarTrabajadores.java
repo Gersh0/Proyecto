@@ -49,12 +49,13 @@ public class AdicionarTrabajadores extends JFrame {
         Almacen.focus(inputBorrarEmpleado, "Cédula");
     }
 
-    public void resetCamposEmpleado(){
+    public void resetCamposEmpleado() {
         inputNombreEmpleado.setText("Nombre");
         inputCcEmpleado.setText("Cédula");
         inputTelefonoEmpleado.setText("Teléfono");
         isVendedor.setSelected(false);
     }
+
     public void defaultCamposProveedor() {
         Almacen.focus(inputNombreProveedor, "Nombre");
         Almacen.focus(inputCcProveedor, "NIT");
@@ -62,13 +63,14 @@ public class AdicionarTrabajadores extends JFrame {
         Almacen.focus(inputBorrarProveedor, "NIT");
         inputAddTipoCarro.setSelectedItem("Tipo de Carros");
     }
-    public void resetCamposProveedor(){
+
+    public void resetCamposProveedor() {
         inputNombreProveedor.setText("Nombre");
         inputCcProveedor.setText("NIT");
         inputTelProveedor.setText("Teléfono");
     }
 
-    public void botonAtras(JButton b){
+    public void botonAtras(JButton b) {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -83,31 +85,54 @@ public class AdicionarTrabajadores extends JFrame {
         });
     }
 
-    public void borrarPersonal(JButton b){
+    public void borrarPersonal(JButton b) {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {//Esto puede cambiarse por case y falta ver cómo tirar error si no existe la cédula pero sí hay gente
-                 if(b.getText().toLowerCase().contains("empleado")){
-                    if(Almacen.getEmpleados()==null){
+                if (b.getText().toLowerCase().contains("empleado")) {
+                    if (Almacen.getEmpleados() == null) {
                         JOptionPane.showMessageDialog(null, "No hay empleados registrados", "Borrar Personal", JOptionPane.ERROR_MESSAGE);
 
-                    }else{
-                        Almacen.delEmpleado(inputBorrarEmpleado.getText());
-                        JOptionPane.showMessageDialog(null, "Empleado eliminado", "Borrar Personal", JOptionPane.INFORMATION_MESSAGE);
-                        inputBorrarEmpleado.setText("Cédula");
+                    } else {
+                        int confirm = JOptionPane.showConfirmDialog(null, "¿Seguro que desea eliminar el empleado?");
+                        switch (confirm) {
+                            case 0:
+                                Almacen.delEmpleado(inputBorrarEmpleado.getText());
+                                JOptionPane.showMessageDialog(null, "Empleado eliminado", "Borrar Personal", JOptionPane.INFORMATION_MESSAGE);
+                                inputBorrarEmpleado.setText("Cédula");
+                                break;
+                            case 1:
+                                inputBorrarEmpleado.setText("Cédula");
+                                break;
+                            case 2:
+                                inputBorrarEmpleado.setText("Cédula");
+                                break;
+                        }
                     }
-                }else{
-                     if(Almacen.getProveedores()==null){
-                         JOptionPane.showMessageDialog(null, "No hay proveedores registrados", "Borrar Personal", JOptionPane.ERROR_MESSAGE);
-                     }else{
-                         Almacen.delProveedor(inputBorrarProveedor.getText());
-                         JOptionPane.showMessageDialog(null, "Proveedor eliminado", "Borrar Personal", JOptionPane.INFORMATION_MESSAGE);
-                         inputBorrarProveedor.setText("NIT");
-                     }
+                } else {
+                    if (Almacen.getProveedores() == null) {
+                        JOptionPane.showMessageDialog(null, "No hay proveedores registrados", "Borrar Personal", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        int confirm = JOptionPane.showConfirmDialog(null, "¿Seguro que desea eliminar el empleado?");
+                        switch (confirm) {
+                            case 0:
+                                Almacen.delProveedor(inputBorrarProveedor.getText());
+                                JOptionPane.showMessageDialog(null, "Proveedor eliminado", "Borrar Personal", JOptionPane.INFORMATION_MESSAGE);
+                                inputBorrarProveedor.setText("NIT");
+                                break;
+                            case 1:
+                                inputBorrarProveedor.setText("Cédula");
+                                break;
+                            case 2:
+                                inputBorrarProveedor.setText("Cédula");
+                                break;
+                        }
+                    }
                 }
             }
         });
     }
+
     public void crearPersonal(JButton b) {
         b.addActionListener(new ActionListener() {
             @Override

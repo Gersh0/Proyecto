@@ -142,9 +142,8 @@ public abstract class Almacen {
 
     public static void addVenta(Vendedor vendedor, Cliente cliente, Carro carro, LocalDate fecha, MP formaDePago) {
         cliente.registrarCompra(new Venta(vendedor, cliente, carro, fecha, formaDePago));
-        delCarro(carro.getMarca(),carro.getModelo());
+        carro.setDisponible(false);
     }
-
 
     public static int buscarProveedor(String nit) {//ver cómo poner con personas
         int i = 0;
@@ -161,7 +160,7 @@ public abstract class Almacen {
         }
     }
 
-    public static int buscarCliente(String cedula)  {//ver cómo poner con personas
+    public static int buscarCliente(String cedula) {//ver cómo poner con personas
         int i = 0;
         if (clientes == null) {
             return -1;
@@ -169,7 +168,8 @@ public abstract class Almacen {
         }
         while (i < clientes.length && !cedula.equals(clientes[i].getCedula())) {
             i++;
-        }if (i >= clientes.length) {
+        }
+        if (i >= clientes.length) {
             return -1;
         }
         return i;
@@ -195,7 +195,7 @@ public abstract class Almacen {
         if (carros == null) {//Si es null envía -1 para indicar que no existe
             return -1;
         } else {
-            while ((i < carros.length) && !(serial.equals(carros[i].getModelo()) && marca.equalsIgnoreCase(carros[i].getMarca()))) {
+            while ((i < carros.length) && !(serial.equals(carros[i].getSerial()) && marca.equalsIgnoreCase(carros[i].getMarca()))) {
                 i++;
             }
             if (i >= carros.length) {
@@ -237,7 +237,7 @@ public abstract class Almacen {
 
     public static void delCarro(String marca, String modelo) {
         int i = 0;
-        while (i<carros.length && !marca.equals(carros[i].getMarca()) && !modelo.equals(carros[i].getModelo())) {
+        while (i < carros.length && !marca.equals(carros[i].getMarca()) && !modelo.equals(carros[i].getModelo())) {
             i++;
         }
 
@@ -245,15 +245,16 @@ public abstract class Almacen {
         carros = Arrays.copyOf(carros, carros.length - 1);
     }
 
-    public static void editDisponibilidad(String marca, String modelo, boolean disponible){
-        int indexCarro=buscarCarro(marca, modelo);
-        if(indexCarro != -1){
+    public static void editDisponibilidad(String marca, String modelo, boolean disponible) {
+        int indexCarro = buscarCarro(marca, modelo);
+        if (indexCarro != -1) {
             carros[indexCarro].setDisponible(disponible);
         }
     }
-    public static void editEstado(String marca, String modelo, boolean disponible){
-        int indexCarro=buscarCarro(marca, modelo);
-        if(indexCarro != -1){
+
+    public static void editEstado(String marca, String modelo, boolean disponible) {
+        int indexCarro = buscarCarro(marca, modelo);
+        if (indexCarro != -1) {
             carros[indexCarro].setEstado(disponible);
         }
     }
@@ -296,12 +297,6 @@ public abstract class Almacen {
                 containsOnlyLetters = false;
                 break;
             }
-        }
-
-        if (containsOnlyLetters) {
-            System.out.println("The string contains only letters.");
-        } else {
-            System.out.println("The string contains other characters as well.");
         }
         return containsOnlyLetters;
     }
