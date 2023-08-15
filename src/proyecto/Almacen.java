@@ -245,6 +245,19 @@ public abstract class Almacen {
         carros = Arrays.copyOf(carros, carros.length - 1);
     }
 
+    public static void editDisponibilidad(String marca, String modelo, boolean disponible){
+        int indexCarro=buscarCarro(marca, modelo);
+        if(indexCarro != -1){
+            carros[indexCarro].setDisponible(disponible);
+        }
+    }
+    public static void editEstado(String marca, String modelo, boolean disponible){
+        int indexCarro=buscarCarro(marca, modelo);
+        if(indexCarro != -1){
+            carros[indexCarro].setEstado(disponible);
+        }
+    }
+
     public static int CantidadVentasRealizasHastaAhora() {
         int cont = 0;
         for (Cliente c : clientes)

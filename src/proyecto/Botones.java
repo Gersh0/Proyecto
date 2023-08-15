@@ -138,6 +138,52 @@ public abstract class Botones {
             }
         });
     }
+    public static void botonEditarEstado(JButton b ,JTextField inputEditarMarca, JTextField inputEditarModelo, Boolean estado){
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String editarMarca = inputEditarMarca.getText();
+                String editarModelo = inputEditarModelo.getText();
+                int indexEditar = Almacen.buscarCarro(editarMarca, editarModelo);
+                if(indexEditar != -1){
+                    Carro a=(Carro) Almacen.getCarros()[indexEditar];
+                    a.setEstado(estado);
+                    JOptionPane.showMessageDialog(null,  editarMarca+ " editado correctamente.",
+                            editarMarca, JOptionPane.INFORMATION_MESSAGE);
+
+                }
+                else if(indexEditar == -1){
+                    JOptionPane.showMessageDialog(null, "No existe un ejemplar de la marca " + editarMarca + " con el modelo ingresado.",
+                            editarMarca, JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+
+    }
+    public static void botonEditarDisponibilidad(JButton b ,JTextField inputEditarMarca, JTextField inputEditarModelo, Boolean estado){
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String editarMarca = inputEditarMarca.getText();
+                String editarModelo = inputEditarModelo.getText();
+                int indexEditar = Almacen.buscarCarro(editarMarca, editarModelo);
+                if(indexEditar != -1){
+                    Carro a=(Carro) Almacen.getCarros()[indexEditar];
+                    a.setDisponible(estado);
+                    JOptionPane.showMessageDialog(null,  editarMarca+ " editado correctamente.",
+                            editarMarca, JOptionPane.INFORMATION_MESSAGE);
+
+                }
+                else if(indexEditar == -1){
+                    JOptionPane.showMessageDialog(null, "No existe un ejemplar de la marca " + editarMarca + " con el modelo ingresado.",
+                            editarMarca, JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+
+    }
 
     public static void botonEstado(JButton b, JFrame f) {
         b.addActionListener(new ActionListener() {
@@ -148,4 +194,6 @@ public abstract class Botones {
             }
         });
     }
+
+
 }

@@ -28,6 +28,8 @@ public class EditarDisponibilidad extends JFrame{
         Almacen.focus(inputDisponibilidadModelo,"Modelo");
         Almacen.focus(inputEstadoModelo,"Modelo");
         Almacen.focus(inputDisponibilidadMarca,"Marca");
+        Botones.botonEditarEstado(botoneditarEstado ,inputEstadoMarca,  inputEstadoModelo, isEstado.isSelected());
+        Botones.botonEditarDisponibilidad(botonEditarDisponibilidad,inputEstadoMarca,inputEstadoModelo,isDisponible.isSelected());
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
