@@ -17,6 +17,9 @@ public class Cliente extends Persona {
     }
 
     public int getCantVentas() {
+        if (comprasRealizadas==null){
+            return 0;
+        }
         return comprasRealizadas.length;
     }
 

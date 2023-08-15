@@ -62,6 +62,7 @@ public abstract class Almacen {
         } else {
             clientes = Arrays.copyOf(clientes, clientes.length + 1);
             clientes[clientes.length - 1] = new Cliente(nombre, cedula, tel);
+            System.out.println(clientes[clientes.length - 1]);
         }
     }
 
@@ -141,7 +142,7 @@ public abstract class Almacen {
 
     public static void addVenta(Vendedor vendedor, Cliente cliente, Carro carro, LocalDate fecha, MP formaDePago) {
         cliente.registrarCompra(new Venta(vendedor, cliente, carro, fecha, formaDePago));
-        delCarro(carro.getMarca(), carro.getModelo());
+        delCarro(carro.getMarca(),carro.getModelo());
     }
 
 
@@ -160,16 +161,16 @@ public abstract class Almacen {
         }
     }
 
-    public static int buscarCliente(String cedula) {//ver cómo poner con personas
+    public static int buscarCliente(String cedula)  {//ver cómo poner con personas
         int i = 0;
-        if (clientes == null) {//Si es null envía -1 para indicar que no existe
+        if (clientes == null) {
             return -1;
+
         }
         while (i < clientes.length && !cedula.equals(clientes[i].getCedula())) {
             i++;
-        }
-        if (i >= clientes.length) {
-            return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
+        }if (i >= clientes.length) {
+            return -1;
         }
         return i;
     }
@@ -178,28 +179,30 @@ public abstract class Almacen {
         int i = 0;
         if (empleados == null) {//Si es null envía -1 para indicar que no existe
             return -1;
+        } else {
+            while (i < empleados.length && !cedula.equals(empleados[i].getCedula())) {
+                i++;
+            }
+            if (i >= empleados.length) {
+                return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
+            }
+            return i;
         }
-        while (i < empleados.length && !cedula.equals(empleados[i].getCedula())) {
-            i++;
-        }
-        if (i >= empleados.length) {
-            return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
-        }
-        return i;
     }
 
     public static int buscarCarro(String marca, String serial) { //Buscar por marca y modelo y que muestre las cilindradas;
         int i = 0;
         if (carros == null) {//Si es null envía -1 para indicar que no existe
             return -1;
+        } else {
+            while ((i < carros.length) && !(serial.equals(carros[i].getModelo()) && marca.equalsIgnoreCase(carros[i].getMarca()))) {
+                i++;
+            }
+            if (i >= carros.length) {
+                return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
+            }
+            return i;
         }
-        while ((i < carros.length) && !(serial.equals(carros[i].getSerial()) && marca.equalsIgnoreCase(carros[i].getMarca()))) {
-            i++;
-        }
-        if (i >= carros.length) {
-            return -1;//Si i es mayor que el arreglo entonces no encontró nada y envía -1 para indicar que no existe
-        }
-        return i;
     }
 
     public static void delCliente(String cedula) {//ver cómo poner con personas
@@ -251,6 +254,26 @@ public abstract class Almacen {
 
     public static int CantidadClientesHastaAhora() {
         return clientes.length;
+    }
+
+    public static void focus(JTextField c, String texto) {
+        c.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (c.getText().contains(texto)) {
+                    c.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (!c.getText().equals("")) {
+
+                } else {
+                    c.setText(texto);
+                }
+            }
+        });
     }
 
     public static boolean soloLetras(String texto) {

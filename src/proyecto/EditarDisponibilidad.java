@@ -24,10 +24,10 @@ public class EditarDisponibilidad extends JFrame{
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        Botones.focus(inputEstadoMarca,"Marca");
-        Botones.focus(inputDisponibilidadModelo,"Modelo");
-        Botones.focus(inputEstadoModelo,"Modelo");
-        Botones.focus(inputDisponibilidadMarca,"Marca");
+        Almacen.focus(inputEstadoMarca,"Marca");
+        Almacen.focus(inputDisponibilidadModelo,"Modelo");
+        Almacen.focus(inputEstadoModelo,"Modelo");
+        Almacen.focus(inputDisponibilidadMarca,"Marca");
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

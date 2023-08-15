@@ -29,15 +29,17 @@ public class Ventas extends JFrame {
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        Botones.focus(inputAddCliente, "Cedula Cliente");
-        Botones.focus(inputAddVendedor, "Cedula Vendedor");
-        Botones.focus(inputBuscarCodigoVenta, "Codigo");
-        Botones.focus(inputAddCarroModelo, "Modelo");
-        Botones.focus(inputAddCarroMarca, "Marca");
-
-        atrasButton.addActionListener(e -> {
-            new Interfaz();
-            dispose();
+        Almacen.focus(inputAddCliente, "Cedula Cliente");
+        Almacen.focus(inputAddVendedor, "Cedula Vendedor");
+        Almacen.focus(inputBuscarCodigoVenta, "Codigo");
+        Almacen.focus(inputAddCarroModelo, "Modelo");
+        Almacen.focus(inputAddCarroMarca, "Marca");
+        atrasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Interfaz();
+                dispose();
+            }
         });
         botonCrearVenta.addActionListener(new ActionListener() {
             @Override
@@ -86,12 +88,15 @@ public class Ventas extends JFrame {
                         int y=Almacen.getClientes()[posicionCliente].getVentasC().length-1;
                         Venta v= Almacen.getClientes()[posicionCliente].getVentasC()[y];
 
+
                             try {//Puse estp porque tira Unhandled Exception- Att, German.
                                 JOptionPane.showMessageDialog(null, "Venta añadida"+v.getCodigo()+" "+v.calcularVenta(),
                                         "Añadir venta", JOptionPane.INFORMATION_MESSAGE);
                             } catch (Exception ex) {
                                 throw new RuntimeException(ex);
                             }
+
+
 
 
                         }

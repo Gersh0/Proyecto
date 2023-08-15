@@ -22,8 +22,8 @@ public class DatosTrabajadores extends JFrame {
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        Botones.focus(inputCcEmpleado, "Cédula");
-        Botones.focus(inputCcProveedor, "NIT");
+        Almacen.focus(inputCcEmpleado, "Cédula");
+        Almacen.focus(inputCcProveedor, "NIT");
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,17 +42,11 @@ public class DatosTrabajadores extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) throws ArrayIndexOutOfBoundsException {
                 try {
-                    if (inputCcEmpleado.equals("Cédula")
-                    ) {
-                        JOptionPane.showMessageDialog(null, "Campos vacios",
-                                "Empleado", JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(null,
-                                "Nombre: " + Almacen.getEmpleados()[Almacen.buscarEmpleado(inputCcEmpleado.getText())].getNombre() +
-                                        "\nCargo: ¿Lo ponemos?",
-                                "Empleado(a)", JOptionPane.INFORMATION_MESSAGE);
-                        inputCcEmpleado.setText("Cédula");
-                    }
+                    JOptionPane.showMessageDialog(null,
+                            "Nombre: " + Almacen.getEmpleados()[Almacen.buscarEmpleado(inputCcEmpleado.getText())].getNombre() +
+                                    "\nCargo: ¿Lo ponemos?",
+                            "Empleado(a)", JOptionPane.INFORMATION_MESSAGE);
+                    inputCcEmpleado.setText("Cédula");
                 } catch (ArrayIndexOutOfBoundsException a) {
                     System.out.println(a);
                     JOptionPane.showMessageDialog(null,

@@ -39,23 +39,23 @@ public class InventarioDeportivos extends JFrame {
         setSize(960, 540);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        Botones.focus(inputAddMarca, "Marca");
-        Botones.focus(inputAddModelo, "Modelo");
-        Botones.focus(inputAddSerial, "Serial");
-        Botones.focus(inputBorrarMarca, "Marca");
-        Botones.focus(inputBorrarSerial, "Serial");
-        Botones.focus(inputBuscarMarca, "Marca");
-        Botones.focus(inputBuscarSerial, "Serial");
-        Botones.focus(inputEditarMarca, "Marca");
-        Botones.focus(inputEditarModelo, "Modelo");
-        Botones.focus(inputEditarPrecio, "Precio");
-        Botones.focus(inputEditarSerial, "Serial");
-        String tipoCarro = "Deportivo";
+        Almacen.focus(inputAddMarca, "Marca");
+        Almacen.focus(inputAddModelo, "Modelo");
+        Almacen.focus(inputAddSerial, "Serial");
+        Almacen.focus(inputBorrarMarca, "Marca");
+        Almacen.focus(inputBorrarSerial, "Serial");
+        Almacen.focus(inputBuscarMarca, "Marca");
+        Almacen.focus(inputBuscarSerial, "Serial");
+        Almacen.focus(inputEditarMarca, "Marca");
+        Almacen.focus(inputEditarModelo, "Modelo");
+        Almacen.focus(inputEditarPrecio, "Precio");
+        Almacen.focus(inputEditarSerial, "Serial");
+        String tipoCarro = "Automovil";
         Botones.enviarBuscar(botonBuscar, inputBuscarMarca, inputBuscarSerial, tipoCarro);
         Botones.enviarCrear(botonCrear, inputAddCilindraje, inputAddMarca, inputAddSerial, inputAddModelo, tipoCarro);
         Botones.enviarBorrar(botonBorrar, inputBorrarMarca, inputBorrarSerial, tipoCarro);
         Botones.enviarEditar(botonEditar, inputEditarMarca, inputEditarSerial, inputEditarModelo, inputEditarPrecio, tipoCarro);
-        Botones.botonEstado(botonEstado, this);
+        Botones.botonEstado(botonEstado,this);
         atrasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
